@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image';
+import Dashboard from '../../components/Layout/Dashboard';
+
 
 const Agreements = () => {
 
@@ -33,7 +35,8 @@ const Agreements = () => {
 
 
     return (
-        <main className="p-10">
+        <Dashboard>
+            <main className="p-10">
 
             <nav className="flex justify-between">
                 <div>
@@ -138,6 +141,7 @@ const Agreements = () => {
             </section>
 
         </main>
+        </Dashboard>
     )
 }
 
