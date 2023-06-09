@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image';
 import Dashboard from '../../components/Layout/Dashboard';
+import arrow_down_svg from '../../public/assets/images/arrow-down.svg'
+import no_recent_activity_img from '../../public/assets/images/no-recent-act.svg'
+import Link from 'next/link';
 
 const Prospects = () => {
 
@@ -21,7 +24,7 @@ const Prospects = () => {
             [...Array(4)].map((_, i) => (
                 <div key={i} className="flex gap-x-10 p-4 border-b-[#E8E8EE] border-b-2 mr-10">
                     <figure className="bg-[#9FF1CA] grid place-items-center rounded-[50%] h-[50px] w-[50px]">
-                        <img src="/assets/images/arrow-down.svg" alt="file-icon-white" />
+                        <Image src={arrow_down_svg} alt="file-icon-white" />
                     </figure>
                     <div className="flex flex-col gap-y-3">
                         <h1 className="text-[#19191A] text-[18px] font-semibold">Offer sent to  Ajibola Quadri for Ikorodu property</h1>
@@ -64,9 +67,11 @@ const Prospects = () => {
 
                             {
                                 openPopup && <div className="absolute right-0 top-[45px] bg-white border-[#62909F] border-[1px] text-[15px]" ref={popupRef}>
-                                    <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
-                                        <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Make offer
-                                    </span>
+                                    <Link href="/make-offers">
+                                        <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
+                                            <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Make offer
+                                        </span>
+                                    </Link>
                                     <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
                                         <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all offers
                                     </span>
@@ -119,7 +124,7 @@ const Prospects = () => {
                             <span className="text-[#62909F] text-[20px] font-semibold underline">View All</span>
                         </div>
                         {
-                            [].length !== 0
+                            [0].length !== 0
                                 ?
                                 recentActivities
                                 :
@@ -132,7 +137,7 @@ const Prospects = () => {
                                         </div>
                                     </div>
                                     <figure>
-                                        <img src="/assets/images/no-recent-act.svg" alt="file-icon-white" />
+                                        <Image src={no_recent_activity_img} alt="file-icon-white" />
                                     </figure>
                                 </div>
                         }

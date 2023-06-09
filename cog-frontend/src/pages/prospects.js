@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image';
 import Dashboard from '../../components/Layout/Dashboard';
+import arrow_down_svg from '../../public/assets/images/arrow-down.svg'
+import no_recent_activity_img from '../../public/assets/images/no-recent-act.svg'
 
 const Prospects = () => {
 
@@ -21,7 +23,7 @@ const Prospects = () => {
             [...Array(4)].map((_, i) => (
                 <div key={i} className="flex gap-x-10 p-4 border-b-[#E8E8EE] border-b-2 mr-10">
                     <figure className="bg-[#9FF1CA] grid place-items-center rounded-[50%] h-[50px] w-[50px]">
-                        <img src="/assets/images/arrow-down.svg" alt="file-icon-white" />
+                        <Image src={arrow_down_svg} alt="file-icon-white" />
                     </figure>
                     <div className="flex flex-col gap-y-3">
                         <h1 className="text-[#19191A] text-[18px] font-semibold">New tenant lead for Ikorodu property</h1>
@@ -118,7 +120,7 @@ const Prospects = () => {
                             <span className="text-[#62909F] text-[20px] font-semibold underline">View All</span>
                         </div>
                         {
-                            [].length !== 0
+                            [1].length !== 0
                                 ?
                                 recentActivities
                                 :
@@ -131,7 +133,7 @@ const Prospects = () => {
                                         </div>
                                     </div>
                                     <figure>
-                                        <img src="/assets/images/no-recent-act.svg" alt="file-icon-white" />
+                                        <Image src={no_recent_activity_img} alt="file-icon-white" />
                                     </figure>
                                 </div>
                         }

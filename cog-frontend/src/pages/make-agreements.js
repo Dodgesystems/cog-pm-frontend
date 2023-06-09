@@ -2,16 +2,58 @@ import React, { useReducer } from 'react'
 import Dashboard from '../../components/Layout/Dashboard'
 import Image from 'next/image'
 
-const MakeOffers = () => {
+const MakeAgreements = () => {
 
     const initState = {
         pagination: 0,
         stepForm: [
-            { title: "Property details", complete: false },
-            { title: "Client details", complete: false },
-            { title: "Amount", complete: false },
-            { title: "Due date", complete: false },
-            { title: "Summary", complete: false },
+            {
+                title: "General",
+                complete: false,
+                subtitle: [
+                    { title: "Type of property", complete: false },
+                    { title: "Agreement type", complete: false }
+                ]
+            },
+            {
+                title: "Property details",
+                complete: false,
+                subtitle: [
+                    { title: "Property address", complete: false },
+                    { title: "Premises physical specifics", complete: false }
+                ]
+            },
+            {
+                title: "Landlord details",
+                complete: false,
+                subtitle: [
+                    { title: "Import/new", complete: false },
+                    { title: "Name", complete: false },
+                    { title: "Address", complete: false }
+                ]
+            },
+            {
+                title: "Client details",
+                complete: false,
+                subtitle: [
+                    { title: "Import/new", complete: false },
+                    { title: "Name", complete: false },
+                    { title: "Address", complete: false },
+                    { title: "Contact", complete: false },
+                ]
+            },
+            {
+                title: "Guarantor details",
+                complete: false,
+                subtitle: [
+                    { title: "Name", complete: false },
+                    { title: "Address", complete: false },
+                    { title: "Contact", complete: false },
+                ]
+            },
+            // { title: "Property manager details", complete: false },
+            // { title: "Terms", complete: false },
+            // { title: "Summary", complete: false }
         ]
     }
 
@@ -19,13 +61,7 @@ const MakeOffers = () => {
         switch (action.type) {
             case "INCREMENT": {
                 return {
-                    ...state,
-                    pagination: action.pagination,
-                    stepForm: [
-                        ...state.stepForm.slice(0, action.pagination - 1),
-                        { ...state.stepForm[action.pagination - 1], complete: action.complete },
-                        ...state.stepForm.slice(action.pagination)
-                    ]
+
                 }
             }
             case "DECREMENT": {
@@ -59,7 +95,7 @@ const MakeOffers = () => {
 
                 <nav className="flex justify-between">
                     <div>
-                        <h1 className="text-[#4B4B4B] text-[38px] font-bold">Offers</h1>
+                        <h1 className="text-[#4B4B4B] text-[38px] font-bold">Agreements</h1>
                     </div>
                     <div>
                         <div className="flex items-center gap-x-12 mb-2">
@@ -82,14 +118,30 @@ const MakeOffers = () => {
                     <div>
                         {
                             state.stepForm.map((step, i) => (
-                                <div className="flex gap-x-4" key={i}>
-                                    <div className="flex flex-col w-max">
-                                        <div className={`grid place-items-center h-[25px] w-[25px] rounded-[50%] text-[12px] border-[1px] border-[#049561] ${step.complete ? 'bg-[#049561] text-white' : 'text-[#049561]'}`}>
-                                            {step.complete ? '✔' : i + 1}
+                                <div key={i}>
+                                    <div className="flex gap-x-4">
+                                        <div className="flex flex-col w-max">
+                                            <div className={`grid place-items-center h-[25px] w-[25px] rounded-[50%] text-[12px] border-[1px] border-[#049561] ${step.complete ? 'bg-[#049561] text-white' : 'text-[#049561]'}`}>
+                                                {step.complete ? '✔' : i + 1}
+                                            </div>
+                                            {i === state.stepForm.length ? null : <div className="h-[15px] w-[1px] bg-[#049561] mx-auto"></div>}
                                         </div>
-                                        {i === state.stepForm.length - 1 ? null : <div className="h-[15px] w-[1px] bg-[#049561] mx-auto"></div>}
+                                        <h2 className="font-bold text-[18px] text-[#4B4B4B]">{step.title}</h2>
                                     </div>
-                                    <h2 className="font-bold text-[18px] text-[#4B4B4B]">{step.title}</h2>
+                                    {
+                                        step.subtitle.map((subStep, i) => (
+                                            <div className="flex gap-x-4 pl-[7px]">
+                                                <div className="flex flex-col w-max">
+                                                    <div className={`grid place-items-center h-[10px] w-[10px] rounded-[50%] text-[12px] border-[1px] border-[#049561] ${step.complete ? 'bg-[#049561] text-white' : 'text-[#049561]'}`}>
+                                                        
+                                                    </div>
+                                                    {i === state.stepForm.length - 1 ? null : <div className="h-[10px] w-[1px] bg-[#049561] mx-auto"></div>}
+                                                </div>
+                                                <h2 className="font-bold text-[15px] text-[#4B4B4B]">{subStep.title}</h2>
+                                            </div>
+                                        ))
+                                    }
+
                                 </div>
                             ))
                         }
@@ -105,7 +157,7 @@ const MakeOffers = () => {
     )
 }
 
-export default MakeOffers
+export default MakeAgreements
 
 const PropertyDetails = ({ dispatch }) => {
 
@@ -255,7 +307,7 @@ const DueDate = ({ dispatch, decrementHandler }) => {
     )
 }
 
-const Summary = ({decrementHandler}) => {
+const Summary = ({ decrementHandler }) => {
 
 
     return (
