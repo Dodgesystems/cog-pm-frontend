@@ -490,7 +490,7 @@ const ProspectForm = () => {
         return (
           <ProspectSummary formData={formData} setFormData={setFormData} />
         );
-
+          
       default:
         // return <FirstForm formData={formData} setFormData={setFormData} />;
         return <h1>Your request has been submitted </h1>;
@@ -499,11 +499,11 @@ const ProspectForm = () => {
 
   return (
     <section className="flex justify-between w-full ">
-      <span className=" w-1/2 ml-2 mt-8 w-2/3 pl-1 ">
+      <span className="  ml-2 mt-8 w-2/3 pl-1 ">
         {" "}
         <ProspectDash />
       </span>
-      <div className="flex flex-col justify-between w-full  border  border-primary py-8 px-4 mt-8 w-2/3 pl-1">
+      <div className="flex flex-col justify-between w-full  border  border-primary py-8 px-4 mt-8 pl-1">
         <div>{conditionalComponent()}</div>
         <main className="flex justify-end border-green-500">
           <div>

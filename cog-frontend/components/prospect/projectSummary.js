@@ -102,24 +102,3 @@ function ProspectSummary({ formData, setFormData }) {
 
 export default ProspectSummary;
 
-{
-  /* <div>Application type</div>
-              <div>Property Type</div>
-              <div>Location </div>
-              <div>Unit ID</div>
-              <div className="my-2">Unit features</div> */
-}
-
-{
-  /* <div>{`formData.file`}</div> */
-}
-{
-  /* <div>{`formData.applicationType`}</div>
-              <div>{`formData.propertyType`}</div>
-              <div>{`formData.location`}</div>
-              <div>{`formData.unitId`}</div>
-              <div className="my-2">
-                {`formData.restRooms`} <div>{`formData. bedRooms`}</div>{" "}
-                <div>{`formData.sittingRooms`}</div>
-              </div> */
-}
