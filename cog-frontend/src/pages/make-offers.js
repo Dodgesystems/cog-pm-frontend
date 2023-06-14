@@ -84,8 +84,8 @@ const MakeOffers = () => {
                             state.stepForm.map((step, i) => (
                                 <div className="flex gap-x-4" key={i}>
                                     <div className="flex flex-col w-max">
-                                        <div className={`grid place-items-center h-[25px] w-[25px] rounded-[50%] text-[12px] border-[1px] border-[#049561] ${step.complete ? 'bg-[#049561] text-white' : 'text-[#049561]'}`}>
-                                            {step.complete ? '✔' : i + 1}
+                                        <div className={`grid place-items-center h-[25px] w-[25px] rounded-[50%] text-[12px] ${state.pagination === i ? "border-[2px] text-[#049561]" : step.complete ? "bg-[#049561] text-white" : "border-[1px] text-[#049561]"} border-[#049561]`}>
+                                            {state.pagination === i || step.complete === false ? i + 1 : '✔'}
                                         </div>
                                         {i === state.stepForm.length - 1 ? null : <div className="h-[15px] w-[1px] bg-[#049561] mx-auto"></div>}
                                     </div>

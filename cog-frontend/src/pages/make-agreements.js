@@ -466,7 +466,7 @@ const LandlordName = ({ dispatch }) => {
                         <p className="text-[#B1B1B4] text-[15px]">This is where you provide the details of the property being sold/rented. You can select from existing property data.
                         </p>
                     </header>
-                    <section className="pt-10 flex flex-col gap-y-16">
+                    <section className="pt-10">
                         <div className="flex gap-x-5">
                             <div className="bg-[#19191A] h-[6px] w-[6px] mt-2"></div>
                             <div>

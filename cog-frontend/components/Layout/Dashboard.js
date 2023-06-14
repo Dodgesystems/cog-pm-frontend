@@ -4,11 +4,12 @@ import Link from "next/link";
 import { useState } from 'react'
 import { ReactSVG } from 'react-svg';
 import styles from '../../src/styles/Dashboard.module.css'
-import Head from 'next/head';
+import cog_logo from '../../public/assets/icons/Cog White logo.svg'
 import { useRouter } from 'next/router';
 
-
 const Dashboard = ({ children }) => {
+
+  const router = useRouter();
 
   const [expandedNav, setExpandedNav] = useState(true)
 
@@ -16,21 +17,17 @@ const Dashboard = ({ children }) => {
 
   const navDisplay = expandedNav ? "block" : "hidden"
 
-  const router = useRouter();
-
   const agency_route = router.pathname === "/prospects" || router.pathname === "/offers" || router.pathname === "/marketplace" ? styles.active : ""
+
 
   return (
     <div className="flex">
-      <Head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet" />
-      </Head>
+
       <nav className="flex">
         <div className={`h-[100vh] bg-primary overflow-y-auto py-4 pr-4 ${styles.dashboard_sidenav_scaffold}`}>
           <header>
-            <figure className="pl-[2px] h-[80px]">
-              <Image src="/assets/icons/Cog White logo.svg" width={111} height={80} alt="Logo" className={navDisplay} />
+            <figure className="pl-[10px] h-[80px]">
+              <Image src={cog_logo} alt="Cog Logo" priority={true} placeholder="blur" blurDataURL="/assets/icons/Cog White logo.svg" as="image/svg+xml" className={`${navDisplay} w-[111px] h-[80px]`} />
             </figure>
             <div className={`${styles.dashboard_nav_title} ${expandedNav ? "" : styles.expand_nav}`}>
               <ReactSVG src="/assets/icons/dashboard-icon.svg" />
@@ -88,7 +85,6 @@ const Dashboard = ({ children }) => {
                 <span>Logout</span>
               </Link>
             </li>
-            
           </ul>
         </div>
         {!expandedNav && <SubNav />}
@@ -97,6 +93,7 @@ const Dashboard = ({ children }) => {
       <div className="overflow-y-auto h-[100vh] flex-1">
         {children}
       </div>
+
     </div>
   )
 }

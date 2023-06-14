@@ -118,3 +118,11 @@ li.go2335061104::before {
 .cog-checkbox-btn-input:checked + .cog-checkbox-btn::before{
   transform:scale(1)
 }
+
+.cog-list-style::before{
+  content:'';
+  height:100%;
+  width:100%;
+  border:2px solid rgb(56, 106, 139); 
+  display:block;
+}
