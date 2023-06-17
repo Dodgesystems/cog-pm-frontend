@@ -4,7 +4,7 @@ import stroke from "../../public/assets/icons/Stroke 1.png";
 import Location from "../../public/assets/icons/Location.png";
 import Image8 from "../../public/assets/images/image 8.png";
 import iPhone from "../../public/assets/images/iPhone.png";
-import benefitData from "../../Data/benefit.js";
+import { benefits as benefitData } from "../../Data/benefit.js";
 import { useState, useEffect } from "react";
 import managerImage from "../../public/assets/images/Frame 157.png";
 import biodun from "../../public/assets/images/biodun.png";

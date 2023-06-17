@@ -17,5 +17,4 @@ export const benefits = [
         heading: 'Brand support',
         text: 'We enable property managers and owners with client-facing tools to entrench their brands and get rental inbounds.'
     },
-
 ]
