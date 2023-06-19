@@ -14,7 +14,7 @@ const ProjectPopUP = ({ isClicked, handleClose }) => {
           <Link href="/dashboard/agency/newprospect">
             <button className="flex items-center">
               <span>
-                <Image src={addimage} className="mr-2" />
+                <Image src={addimage} alt="" className="mr-2" />
               </span>
               Add new prospect
             </button>
@@ -23,7 +23,7 @@ const ProjectPopUP = ({ isClicked, handleClose }) => {
         <div className="flex">
           <button className="flex items-center">
             <span>
-              <Image src={eyeimage} className="mr-2" />
+              <Image src={eyeimage} alt="" className="mr-2" />
             </span>
             View all prospects
           </button>
