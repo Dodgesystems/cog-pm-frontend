@@ -15,6 +15,7 @@ import lady from "../../public/assets/images/lady.png";
 import Arrow from "../../public/assets/icons/Arrow - Down 2.png";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
+import fiCloud from "../../public/assets/icons/fi_cloud-lightning.png"
 export default function Home() {
   return (
    <>
@@ -173,19 +174,19 @@ const Benefit = () => {
   const benefits = [
     {
       id: 1,
-      image: "fi_cloud-lightning.png",
+      image: "/assets/icons/fi_cloud-lightning.png",
       heading: "Property search",
       text: "Searching for rental roperties is one  thing, finding suitable ones for you without hassles is another. We handle that burden for you.",
     },
     {
       id: 2,
-      image: "fi_cloud-lightning.png",
+      image: "/assets/icons/fi_cloud-lightning.png",
       heading: "Cloud based support",
       text: "We provide tenant onboarding, property operations support (including financial tools) for property managers and owners.",
     },
     {
       id: 3,
-      image: "fi_award.png",
+      image: "/assets/icons/fi_cloud-lightning.png",
       heading: "Brand support",
       text: "We enable property managers and owners with client-facing tools to entrench their brands and get rental inbounds.",
     },
@@ -210,7 +211,8 @@ const Benefit = () => {
           >
             <div className="flex justify-center">
               <Image
-                src={`/../public/assets/icons/${benefit.image}`}
+                // src={`/../public/assets/icons/${benefit.image}`}
+                src={benefit.image}
                 width={30}
                 height={30}
                 alt="Benefit Image"
