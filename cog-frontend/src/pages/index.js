@@ -45,8 +45,8 @@ const Header = () => {
         The property rental and sales <br /> experience just got better
       </h1>
       <small className="text-xs leading-snug text-lightGrey">
-        Either you are a real estate renter, buyer or manager, we make <br /> your
-        operations seamless.
+        Either you are a real estate renter, buyer or manager, we make <br />{" "}
+        your operations seamless.
       </small>
     </header>
   );
@@ -169,16 +169,36 @@ const BenefitHeader = () => {
 };
 
 const Benefit = () => {
-  console.log(benefitData);
-  const [benefits, setBenefits] = useState([]);
-  const fetchBenefits = async () => {
-    const response = await fetch(`/api/benefits`);
-    const data = await response.json();
-    setBenefits(data);
-  };
-  useEffect(() => {
-    fetchBenefits();
-  }, []);
+  const benefits = [
+    {
+      id: 1,
+      image: "/assets/icons/fi_cloud-lightning.png",
+      heading: "Property search",
+      text: "Searching for rental roperties is one  thing, finding suitable ones for you without hassles is another. We handle that burden for you.",
+    },
+    {
+      id: 2,
+      image: "/assets/icons/fi_cloud-lightning.png",
+      heading: "Cloud based support",
+      text: "We provide tenant onboarding, property operations support (including financial tools) for property managers and owners.",
+    },
+    {
+      id: 3,
+      image: "/assets/icons/fi_cloud-lightning.png",
+      heading: "Brand support",
+      text: "We enable property managers and owners with client-facing tools to entrench their brands and get rental inbounds.",
+    },
+  ];
+  // console.log(benefitData);
+  // const [benefits, setBenefits] = useState([]);
+  // const fetchBenefits = async () => {
+  //   const response = await fetch(`/api/benefits`);
+  //   const data = await response.json();
+  //   setBenefits(data);
+  // };
+  // useEffect(() => {
+  //   fetchBenefits();
+  // }, []);
   return (
     <>
       {benefits.map((benefit) => {
@@ -189,7 +209,8 @@ const Benefit = () => {
           >
             <div className="flex justify-center">
               <Image
-                src={`/../public/assets/icons/${benefit.image}`}
+                // src={`/../public/assets/icons/${benefit.image}`}
+                src={benefit.image}
                 width={30}
                 height={30}
                 alt="Benefit Image"
