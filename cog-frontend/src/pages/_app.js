@@ -66,9 +66,7 @@ function App({ Component, ...rest }) {
 
   return (
     <Provider store={store}>
-      <Layout className={myFont.className}>
         <Component {...pageProps} />
-      </Layout>
     </Provider>
   );
 }
