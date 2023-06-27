@@ -15,11 +15,10 @@ import lady from "../../public/assets/images/lady.png";
 import Arrow from "../../public/assets/icons/Arrow - Down 2.png";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
-import fiCloud from "../../public/assets/icons/fi_cloud-lightning.png"
+import Layout from "../../components/Layout/Layout";
 export default function Home() {
   return (
-   <>
-     <Navbar/>
+   <Layout title='home'>
      <main className="font-Euclid">
       <Header />
       <Seacrh />
@@ -35,8 +34,7 @@ export default function Home() {
       <Why />
       <Faq />
     </main>
-    <Footer/>
-   </>
+   </Layout>
   );
 }
 
