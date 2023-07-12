@@ -21,7 +21,7 @@ const Navbar = () => {
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>
             <Link
-              href="/signin"
+              href="/loginPage"
               className="bg-primary text-white px-5 py-2 rounded cursor-pointer"
             >
               Sign in
