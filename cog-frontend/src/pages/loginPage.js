@@ -1,12 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 import Logo from "../../public/assets/icons/COG Logo.png";
+import { useRouter } from "next/router";
 function loginPage() {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const router = useRouter();
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setLogin((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  }
+  const handleSubmit = async (e) => {
+    // const response = await axios
+    //   .post("https://c-o-g.onrender.com/api/v1/auth/login?role=manager", login)
+    //   .then(response.data);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
+        login
+      );
+
+      if (response.status === 200) {
+        // alert("Logged In Successfully");
+        localStorage.setItem("token", response.data.token);
+        router.push("/");
+        // console.log(response.data.token);
+      }
+    } catch (error) {
+      // Handle error, such as displaying an error message to the user
+      console.log(error);
+    }
+  };
+  console.log(login);
   return (
     <section className="flex flex-col items-center justify-center w-1/2 m-auto my-auto h-screen">
       <section>
         {" "}
-        <Image src={Logo} className="w-[200px] flex items-center" />
+        <Image src={Logo} className="w-[200px] flex items-center" alt="logo" />
       </section>
       <div className="flex flex-col justify-center text-center">
         <p className="text-[22px] mt-5 text-primary">Sign-In</p>
@@ -14,7 +53,7 @@ function loginPage() {
           Sign in to your cog account
         </p>
       </div>
-      <form className="mt-12 w-1/2 ">
+      <form className="mt-12 w-1/2 " onSubmit={handleSubmit}>
         <label className="text-[20px] font-[400] text-[#999999]">
           Email/Unique numeric identifier
         </label>
@@ -23,6 +62,9 @@ function loginPage() {
           className="border rounded py-7 outline-none px-3 w-full my-5 "
           type="text"
           placeholder="Enter Business Address"
+          name="email"
+          id="email"
+          onChange={handleChange}
         />
         <label className="text-[20px] font-[400] text-[#999999]">
           Password
@@ -32,6 +74,9 @@ function loginPage() {
           className="border rounded py-7 outline-none px-3 w-full mt-5"
           type="password"
           placeholder="Enter Business Address"
+          name="password"
+          id="pass"
+          onChange={handleChange}
         />
         <p className="flex justify-end text-primary cursor-pointer mt-1">
           Forgot Password?
@@ -41,6 +86,7 @@ function loginPage() {
           type="submit"
           value="SIGN IN"
           className="flex justify-center items-center border w-full mt-7 py-5 bg-primary text-white rounded-lg cursor-pointer hover:bg-slate-500 hover:font-bold"
+          onSubmit={handleSubmit}
         />
       </form>
     </section>
