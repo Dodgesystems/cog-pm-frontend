@@ -18,23 +18,23 @@ import Navbar from "../../components/navbar";
 import Layout from "../../components/Layout/Layout";
 export default function Home() {
   return (
-   <Layout title='home'>
-     <main className="font-Euclid">
-      <Header />
-      <Seacrh />
-      <Rentals />
-      <PropertyMangaers />
-      <BenefitHeader />
-      <div className="flex justify-center w-full">
-        <Benefit />
-      </div>
-      <ForRentals />
-      <ForManagers />
-      <Stories />
-      <Why />
-      <Faq />
-    </main>
-   </Layout>
+    <Layout title="home">
+      <main className="font-Euclid">
+        <Header />
+        <Seacrh />
+        <Rentals />
+        <PropertyMangaers />
+        <BenefitHeader />
+        <div className="flex justify-center w-full">
+          <Benefit />
+        </div>
+        <ForRentals />
+        <ForManagers />
+        <Stories />
+        <Why />
+        <Faq />
+      </main>
+    </Layout>
   );
 }
 
