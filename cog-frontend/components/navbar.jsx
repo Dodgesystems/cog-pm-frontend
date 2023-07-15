@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo1 from "../public/assets/icons/COG Logo.png";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth";
 const Navbar = () => {
+  // const [session, loading] = useSession;
   return (
     <header className="border-b-4 cursor-pointer">
       <nav className=" mb-5  border-hr flex justify-between px-24 items-center">
@@ -20,12 +23,23 @@ const Navbar = () => {
         <div className="w-48">
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>
-            <Link
+
+            {/* <Link
               href="/loginPage"
               className="bg-primary text-white px-5 py-2 rounded cursor-pointer"
+              onClick={() => {
+                signIn()
+              }}
             >
               Sign in
-            </Link>
+            </Link> */}
+            <button
+              onClick={() => {
+                signIn();
+              }}
+            >
+              sigin In
+            </button>
           </ul>
         </div>
       </nav>

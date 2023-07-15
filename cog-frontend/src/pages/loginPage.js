@@ -3,6 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 import Logo from "../../public/assets/icons/COG Logo.png";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 function loginPage() {
   const [login, setLogin] = useState({
     email: "",
@@ -23,24 +24,28 @@ function loginPage() {
     //   .post("https://c-o-g.onrender.com/api/v1/auth/login?role=manager", login)
     //   .then(response.data);
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
-        login
-      );
+    signIn("credentials", {
+      email: login.email,
+      password: login.password,
+    });
+    // try {
+    //   const response = await axios.post(
+    //     "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
+    //     login
+    //   );
 
-      if (response.status === 200) {
-        // alert("Logged In Successfully");
-        localStorage.setItem("token", response.data.token);
-        router.push("/");
-        // console.log(response.data.token);
-      }
-    } catch (error) {
-      // Handle error, such as displaying an error message to the user
-      console.log(error);
-    }
+    //   if (response.status === 200) {
+    //     // alert("Logged In Successfully");
+    //     localStorage.setItem("token", response.data.token);
+    //     router.push("/");
+    //     // console.log(response.data.token);
+    //   }
+    // } catch (error) {
+    //   // Handle error, such as displaying an error message to the user
+    //   console.log(error);
+    // }
   };
-  console.log(login);
+  // console.log(login);
   return (
     <section className="flex flex-col items-center justify-center w-1/2 m-auto my-auto h-screen">
       <section>
@@ -65,6 +70,7 @@ function loginPage() {
           name="email"
           id="email"
           onChange={handleChange}
+          value={login.email}
         />
         <label className="text-[20px] font-[400] text-[#999999]">
           Password
@@ -77,6 +83,7 @@ function loginPage() {
           name="password"
           id="pass"
           onChange={handleChange}
+          value={login.password}
         />
         <p className="flex justify-end text-primary cursor-pointer mt-1">
           Forgot Password?
