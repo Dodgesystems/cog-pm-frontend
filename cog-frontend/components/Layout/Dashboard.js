@@ -17,12 +17,15 @@ const Dashboard = ({ children }) => {
 
   const navDisplay = expandedNav ? "block" : "hidden"
 
-  const agency_route = router.pathname === "/prospects" || router.pathname === "/offers" || router.pathname === "/marketplace" ? styles.active : ""
+  const agency_route = router.pathname === "/prospects" || router.pathname === "/offers" || router.pathname === "/marketplace" || router.pathname === "/make-marketplace" || router.pathname === "/make-offers" || router.pathname === "/make-agreements"
+    ? styles.active
+    : ""
+
+  const agency_rt = router.pathname === "/prospects" || router.pathname === "/offers" || router.pathname === "/marketplace" ? router.pathname : router.pathname
 
 
   return (
     <div className="flex">
-
       <nav className="flex">
         <div className={`h-[100vh] bg-primary overflow-y-auto py-4 pr-4 ${styles.dashboard_sidenav_scaffold}`}>
           <header>
@@ -43,7 +46,7 @@ const Dashboard = ({ children }) => {
               </Link>
             </li>
             <li className={agency_route} >
-              <Link href='/prospects' onClick={() => navDisplayHandler(false)}>
+              <Link href={agency_rt} onClick={() => navDisplayHandler(false)}>
                 <ReactSVG src="/assets/icons/agency-icon.svg" />
                 <span>Agency</span>
               </Link>
@@ -63,7 +66,7 @@ const Dashboard = ({ children }) => {
             <li className={router.pathname === "/bank-office" ? styles.active : ""} >
               <Link href='/bank-office'>
                 <ReactSVG src="/assets/icons/back-office-icon.svg" />
-                <span>Bank Office</span>
+                <span>Back Office</span>
               </Link>
             </li>
             <li className={router.pathname === "/settings" ? styles.active : ""} >
@@ -107,15 +110,15 @@ const SubNav = () => {
   return (
     <nav className={`p-[20px] h-[100vh] bg-white border-2 border-[#62909F] overflow-y-auto ${styles.dashboard_sidenav_scaffold}`}>
       <div className="flex flex-col gap-y-4 mt-[120px]">
-        <Link href="/prospects" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3">
+        <Link href="/prospects" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3 rounded-[10px] border-[1px] hover:border-primary">
           <ReactSVG src="/assets/icons/prospect-icon.svg" />
           <span>Prospects</span>
         </Link>
-        <Link href="/marketplace" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3">
+        <Link href="/marketplace" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3 rounded-[10px] border-[1px] hover:border-primary">
           <ReactSVG src="/assets/icons/marketplace-icon.svg" />
           <span>Marketplace</span>
         </Link>
-        <Link href="/offers" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3">
+        <Link href="/offers" className="text-[#B1B1B4] py-2 px-5 items-center flex gap-x-3 border-[1px] hover:border-primary rounded-[10px]">
           <ReactSVG src="/assets/icons/offer-icon.svg" />
           <span>Offers</span>
         </Link>
