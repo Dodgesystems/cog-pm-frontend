@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Dashboard from '../../components/Layout/Dashboard';
 import arrow_down_svg from '../../public/assets/images/arrow-down.svg'
 import no_recent_activity_img from '../../public/assets/images/no-recent-act.svg'
+import Link from 'next/link'
 
 const Marketplace = () => {
 
@@ -44,12 +45,14 @@ const Marketplace = () => {
                     </div>
                     <div>
                         <div className="flex items-center gap-x-12 mb-2">
-                            <figure><Image
-                                src="/assets/images/notification.svg"
-                                alt="Notification"
-                                width={24}
-                                height={24}
-                            /></figure>
+                            <figure>
+                                <Image
+                                    src="/assets/images/notification.svg"
+                                    alt="Notification"
+                                    width={24}
+                                    height={24}
+                                />
+                            </figure>
                             <div className="h-[58px] w-[58px] rounded-[50%] bg-[#E0CA04] grid place-items-center">
                                 <span className="font-bold text-[20px]">PA</span>
                             </div>
@@ -65,9 +68,11 @@ const Marketplace = () => {
 
                             {
                                 openPopup && <div className="absolute right-0 top-[45px] bg-white border-[#62909F] border-[1px] text-[15px]" ref={popupRef}>
-                                    <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
-                                        <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Listings manager
-                                    </span>
+                                    <Link href="/make-marketplace">
+                                        <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
+                                            <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Listings manager
+                                        </span>
+                                    </Link>
                                     <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
                                         <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View/edit website
                                     </span>
@@ -77,7 +82,6 @@ const Marketplace = () => {
                     </div>
 
                     <div className="pt-10 flex justify-between gap-x-5">
-
                         <div className="w-full max-w-[367px] bg-[#386A8B] border-2 border-[#386A8B] p-5 text-white border-2">
                             <div className="flex justify-end pb-1">
                                 <Image src="/assets/images/file-icon-white.svg" alt="file-icon-white" width={15} height={19} />
@@ -86,7 +90,6 @@ const Marketplace = () => {
                             <h1 className="font-bold text-[32px] mt-6 mb-8">10</h1>
                             <p className="font-semibold">+ Increased by 30% since July 2022</p>
                         </div>
-
                         <div className="w-full max-w-[367px] border-2 border-[#386A8B] p-5">
                             <div className="flex justify-end pb-1">
                                 <Image src="/assets/images/file-icon-blue.svg" alt="file-icon-white" width={15} height={19} />
@@ -95,7 +98,6 @@ const Marketplace = () => {
                             <h1 className="font-bold text-[32px] mt-6 mb-8">25</h1>
                             <p className="text-[#049561] font-semibold">+ Increased by 30% since July 2022</p>
                         </div>
-
                         <div className="w-full max-w-[367px] border-2 border-[#386A8B] p-5">
                             <div className="flex justify-end pb-1">
                                 <Image src="/assets/images/file-icon-blue.svg" alt="file-icon-white" width={15} height={19} />
@@ -104,16 +106,12 @@ const Marketplace = () => {
                             <h1 className="font-bold text-[32px] mt-6 mb-8">20</h1>
                             <p className="text-[#E00525] font-semibold">+ Increased by 30% since July 2022</p>
                         </div>
-
                     </div>
-
-
                     <div className="flex pt-10">
                         <div className="relative ml-auto">
                             <button className="text-[#386A8B] border-[#62909F] border-[1px] font-semibold bg-white rounded-[4px] px-6 py-2 ml-auto">View custom report</button>
                         </div>
                     </div>
-
                     <div className="mt-20 border-[#62909F] border-2">
                         <div className="py-5 px-8 flex justify-between items-center border-b-[#E8E8EE] border-b-2 mr-10">
                             <h1 className="text-[#4B4B4B] text-[22px] font-bold">Recent Activities</h1>
