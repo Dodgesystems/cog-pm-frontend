@@ -20,30 +20,18 @@ function loginPage() {
     });
   }
   const handleSubmit = async (e) => {
-    // const response = await axios
-    //   .post("https://c-o-g.onrender.com/api/v1/auth/login?role=manager", login)
-    //   .then(response.data);
     e.preventDefault();
-    signIn("credentials", {
-      email: login.email,
-      password: login.password,
-    });
-    // try {
-    //   const response = await axios.post(
-    //     "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
-    //     login
-    //   );
+    const response = await axios.post(
+      "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
+      login
+    );
 
-    //   if (response.status === 200) {
-    //     // alert("Logged In Successfully");
-    //     localStorage.setItem("token", response.data.token);
-    //     router.push("/");
-    //     // console.log(response.data.token);
-    //   }
-    // } catch (error) {
-    //   // Handle error, such as displaying an error message to the user
-    //   console.log(error);
-    // }
+    if (response.status === 200) {
+      alert("Logged In Successfully");
+      localStorage.setItem("token", response.data.token);
+      router.push("/");
+      console.log(response.data.token);
+    }
   };
   // console.log(login);
   return (
@@ -55,7 +43,7 @@ function loginPage() {
       <div className="flex flex-col justify-center text-center">
         <p className="text-[22px] mt-5 text-primary">Sign-In</p>
         <p className="text-[14px]   font-[600] text-[#6666] ">
-          Sign in to your cog account
+          b Sign in to your cog account
         </p>
       </div>
       <form className="mt-12 w-1/2 " onSubmit={handleSubmit}>
@@ -93,7 +81,6 @@ function loginPage() {
           type="submit"
           value="SIGN IN"
           className="flex justify-center items-center border w-full mt-7 py-5 bg-primary text-white rounded-lg cursor-pointer hover:bg-slate-500 hover:font-bold"
-          onSubmit={handleSubmit}
         />
       </form>
     </section>

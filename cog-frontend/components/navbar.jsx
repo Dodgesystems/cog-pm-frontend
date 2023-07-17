@@ -24,22 +24,19 @@ const Navbar = () => {
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>
 
-            {/* <Link
+            <Link
               href="/loginPage"
               className="bg-primary text-white px-5 py-2 rounded cursor-pointer"
-              onClick={() => {
-                signIn()
-              }}
             >
               Sign in
-            </Link> */}
-            <button
+            </Link>
+            {/* <button
               onClick={() => {
                 signIn();
               }}
             >
               sigin In
-            </button>
+            </button> */}
           </ul>
         </div>
       </nav>
