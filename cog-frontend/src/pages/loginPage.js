@@ -30,7 +30,7 @@ function loginPage() {
     // });
     try {
       const response = await axios.post(
-        "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
+        "https://c-o-g.onrender.com/api/v1/auth/login",
         login
       );
 

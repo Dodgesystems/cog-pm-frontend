@@ -9,7 +9,7 @@ function signupPage() {
     password: "",
     phonenumber: "",
     email: "",
-    userType: "",
+    // role: "",
     userCategory: "",
   });
 
@@ -25,6 +25,21 @@ function signupPage() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://c-o-g.onrender.com/api/v1/auth/register",
+        signup
+      );
+
+      if (response.status === 201) {
+        console.log(response.data);
+      } else {
+        console.log({ error });
+      }
+    } catch (error) {
+      // Handle error, such as displaying an error message to the user
+      console.log(error);
+    }
   };
   console.log(signup);
   return (
@@ -40,7 +55,7 @@ function signupPage() {
         </p>
       </div>
 
-      <form className="mt-8 text-[#999999]" onSubmit={handleSubmit}>
+      <form className="mt-8 text-[#999999]" onSubmit={(e) => handleSubmit(e)}>
         <main className=" grid grid-cols-2 gap-4">
           <section className="flex flex-col">
             <label>Name</label>
@@ -50,21 +65,22 @@ function signupPage() {
               name="name"
               onChange={handleChange}
               id="name"
+              value={signup.name}
             />
           </section>
-          <section className="flex flex-col">
+          {/* <section className="flex flex-col">
             <label>User Type</label>
             <select
               onChange={handleChange}
               className="border w-[300px] h-[50px] text-gray-400 pr-4 outline-none"
               placeholder="select"
-              name="userType"
+              name="role"
             >
               <option>Selected category</option>
               <option
                 value="Renter/Buyer"
-                name="userType"
-                id="userType"
+                name="role"
+                id="role"
                 className="text-black"
               >
                 Renter/Buyer
@@ -72,13 +88,13 @@ function signupPage() {
               <option
                 className="text-black"
                 value="Property manager/owner"
-                name="userType"
-                id="userType"
+                name="role"
+                id="role"
               >
                 Property manager/owner
               </option>
             </select>
-          </section>
+          </section> */}
           <section className="flex flex-col">
             <label>Enter email</label>
             <input
@@ -86,6 +102,7 @@ function signupPage() {
               className="border w-[300px] h-[50px] outline-none pl-3"
               name="email"
               onChange={handleChange}
+              value={signup.email}
             />
           </section>
           <section className="flex flex-col">
@@ -123,6 +140,7 @@ function signupPage() {
               className="border w-[300px] h-[50px] outline-none pl-3"
               name="password"
               onChange={handleChange}
+              value={signup.password}
             />
           </section>
           <section className="flex flex-col">
@@ -131,6 +149,7 @@ function signupPage() {
               type="text"
               className="border w-[300px] h-[50px] outline-none pl-3"
               name="phonenumber"
+              value={signup.phonenumber}
               onChange={handleChange}
             />
           </section>
