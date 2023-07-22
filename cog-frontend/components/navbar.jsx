@@ -20,26 +20,35 @@ const Navbar = () => {
             <Link href="/managers">For property managers/owners</Link>
           </ul>
         </div>
-        <div className="w-48">
+        <div className="">
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>
 
-            {/* <Link
+            <Link
               href="/loginPage"
               className="bg-primary text-white px-5 py-2 rounded cursor-pointer"
-              onClick={() => {
-                signIn()
-              }}
+              // onClick={() => {
+              //   signIn();
+              // }}
             >
               Sign in
-            </Link> */}
-            <button
+            </Link>
+            <Link
+              href="/signupPage"
+              className="bg-primary text-white px-5 py-2 rounded cursor-pointer"
+              // onClick={() => {
+              //   signIn();
+              // }}
+            >
+              Sign up
+            </Link>
+            {/* <button
               onClick={() => {
                 signIn();
               }}
             >
               sigin In
-            </button>
+            </button> */}
           </ul>
         </div>
       </nav>

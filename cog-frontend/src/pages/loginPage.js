@@ -24,26 +24,26 @@ function loginPage() {
     //   .post("https://c-o-g.onrender.com/api/v1/auth/login?role=manager", login)
     //   .then(response.data);
     e.preventDefault();
-    signIn("credentials", {
-      email: login.email,
-      password: login.password,
-    });
-    // try {
-    //   const response = await axios.post(
-    //     "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
-    //     login
-    //   );
+    // signIn("credentials", {
+    //   email: login.email,
+    //   password: login.password,
+    // });
+    try {
+      const response = await axios.post(
+        "https://c-o-g.onrender.com/api/v1/auth/login?role=manager",
+        login
+      );
 
-    //   if (response.status === 200) {
-    //     // alert("Logged In Successfully");
-    //     localStorage.setItem("token", response.data.token);
-    //     router.push("/");
-    //     // console.log(response.data.token);
-    //   }
-    // } catch (error) {
-    //   // Handle error, such as displaying an error message to the user
-    //   console.log(error);
-    // }
+      if (response.status === 200) {
+        // alert("Logged In Successfully");
+        localStorage.setItem("token", response.data.token);
+        router.push("/");
+        // console.log(response.data.token);
+      }
+    } catch (error) {
+      // Handle error, such as displaying an error message to the user
+      console.log(error);
+    }
   };
   // console.log(login);
   return (
@@ -58,13 +58,13 @@ function loginPage() {
           Sign in to your cog account
         </p>
       </div>
-      <form className="mt-12 w-1/2 " onSubmit={handleSubmit}>
-        <label className="text-[20px] font-[400] text-[#999999]">
+      <form className="mt-12 w-full " onSubmit={handleSubmit}>
+        <label className="text-[20px] font-[400] text-[#999999] mb-8">
           Email/Unique numeric identifier
         </label>
         <br />
         <input
-          className="border rounded py-7 outline-none px-3 w-full my-5 "
+          className="border rounded  outline-none px-3 mt-4 w-full h-[50px] "
           type="text"
           placeholder="Enter Business Address"
           name="email"
@@ -77,7 +77,7 @@ function loginPage() {
         </label>
         <br />
         <input
-          className="border rounded py-7 outline-none px-3 w-full mt-5"
+          className="border rounded  outline-none px-3 mt-4 w-full h-[50px]"
           type="password"
           placeholder="Enter Business Address"
           name="password"
@@ -92,7 +92,7 @@ function loginPage() {
         <input
           type="submit"
           value="SIGN IN"
-          className="flex justify-center items-center border w-full mt-7 py-5 bg-primary text-white rounded-lg cursor-pointer hover:bg-slate-500 hover:font-bold"
+          className="flex justify-center items-center border w-full mt-7 py-2 bg-primary text-white rounded-lg cursor-pointer hover:bg-slate-500 hover:font-bold"
           onSubmit={handleSubmit}
         />
       </form>
