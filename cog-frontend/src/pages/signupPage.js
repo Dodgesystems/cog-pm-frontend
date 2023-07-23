@@ -68,7 +68,7 @@ function signupPage() {
               value={signup.name}
             />
           </section>
-          {/* <section className="flex flex-col">
+          <section className="flex flex-col">
             <label>User Type</label>
             <select
               onChange={handleChange}
@@ -94,7 +94,7 @@ function signupPage() {
                 Property manager/owner
               </option>
             </select>
-          </section> */}
+          </section>
           <section className="flex flex-col">
             <label>Enter email</label>
             <input
