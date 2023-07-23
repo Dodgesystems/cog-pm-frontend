@@ -1109,6 +1109,11 @@
     "resolve" "^1.22.1"
     "semver" "^7.3.8"
 
+"eslint-plugin-next@^0.0.0":
+  "integrity" "sha512-IldNDVb6WNduggwRbYzSGZhaskUwVecJ6fhmqwX01+S1aohwAWNzU4me6y47DDzpD/g0fdayNBGxEdt9vKkUtg=="
+  "resolved" "https://registry.npmjs.org/eslint-plugin-next/-/eslint-plugin-next-0.0.0.tgz"
+  "version" "0.0.0"
+
 "eslint-plugin-promise@^6.0.0":
   "integrity" "sha512-tjqWDwVZQo7UIPMeDReOpUgHCmCiH+ePnVT+5zVapL0uuHnegBUs2smM13CzOs2Xb5+MHMRFTs9v24yjba4Oig=="
   "resolved" "https://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-6.1.1.tgz"
