@@ -13,10 +13,10 @@ const Navbar = () => {
             <Link href="/" className="px-4 cursor-pointer">
               Home
             </Link>
-            <Link href="/forrentals">For rentals</Link>
+            <Link href="/forrentals">For buyers/rentals</Link>
             <Link href="/managers">For property managers/owners</Link>
           </ul>
-        </div>
+        </div> 
         <div className="w-48">
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>

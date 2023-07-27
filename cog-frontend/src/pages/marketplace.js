@@ -193,8 +193,11 @@ const Marketplace = () => {
                 </div>
                 <figure>
                   <Image
+
                     src="/assets/images/no-recent-act.svg"
                     alt="file-icon-white"
+                    width={20}
+                    height={20}
                   />
                 </figure>
               </div>
