@@ -13,11 +13,12 @@ const Navbar = () => {
             <Link href="/" className="px-4 cursor-pointer">
               Home
             </Link>
+            <Link href="/for-rentals">For buyers/rentals</Link>
             <Link href="/for-rentals">For buyers/renters</Link>
             {/* EDITED THIS TO SHIFT THE 'FOR RENTALS PAGE TO THE SRC DIRECTORY */}
             <Link href="/managers">For property managers/owners</Link>
           </ul>
-        </div>
+        </div> 
         <div className="w-48">
           <ul className="flex justify-between items-center">
             <Link href="/about">About us</Link>
@@ -31,7 +32,7 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-  );
-};
+  )
+}
 
 export default Navbar;
