@@ -162,7 +162,7 @@ const ProspectForm = () => {
             >
               2
             </span>
-            <span className="text-gray-600">Property Details</span>
+            <span className="text-gray-600 pl-4">Property Details</span>
           </li>
           {page >= 5 && page <= 9 && (
             <div className="">
@@ -246,7 +246,7 @@ const ProspectForm = () => {
             >
               3
             </span>
-            <span className="text-gray-600">Demography</span>
+            <span className="text-gray-600 pl-4">Demography</span>
           </li>
           {page >= 10 && page <= 16 && (
             <div className="">
@@ -356,7 +356,7 @@ const ProspectForm = () => {
             >
               4
             </span>
-            <span className="text-gray-600">Amount</span>
+            <span className="text-gray-600 pl-4">Amount</span>
           </li>
           {page >= 17 && page <= 19 && (
             <div className="">
@@ -414,7 +414,7 @@ const ProspectForm = () => {
             >
               5
             </span>
-            <span className="text-gray-600">Signing date</span>
+            <span className="text-gray-600  pl-4">Signing date</span>
           </li>
         </ul>
         <ul className=" list-inside text-xs mt-4 w-2/3 pl-1">
@@ -428,7 +428,7 @@ const ProspectForm = () => {
             >
               6
             </span>
-            <span className="text-gray-600">Summary</span>
+            <span className="text-gray-600 pl-4">Summary</span>
           </li>
         </ul>
       </div>
@@ -503,7 +503,7 @@ const ProspectForm = () => {
         {" "}
         <ProspectDash />
       </span>
-      <div className="flex flex-col justify-between w-full  border  border-primary py-8 px-4 mt-8 pl-1">
+      <div className="flex flex-col justify-between w-full  border  border-primary p-6 mt-8">
         <div>{conditionalComponent()}</div>
         <main className="flex justify-end border-green-500">
           <div>

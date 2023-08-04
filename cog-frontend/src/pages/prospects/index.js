@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react'
-import Image from 'next/image';
-import Dashboard from '../../components/Layout/Dashboard';
-import arrow_down_svg from '../../public/assets/images/arrow-down.svg'
-import no_recent_activity_img from '../../public/assets/images/no-recent-act.svg'
+import Link from 'next/link'
+import Image from 'next/image'
+import Dashboard from '../../../components/Layout/Dashboard'
+import arrow_down_svg from 'public/assets/images/arrow-down.svg'
+import no_recent_activity_img from 'public/assets/images/no-recent-act.svg'
 
 const Prospects = () => {
 
@@ -66,12 +67,17 @@ const Prospects = () => {
 
                             {
                                 openPopup && <div className="absolute right-0 top-[45px] bg-white border-[#62909F] border-[1px] text-[15px]" ref={popupRef}>
-                                    <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
-                                        <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Add New Project
-                                    </span>
-                                    <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
-                                        <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all prospects
-                                    </span>
+                                    <Link href="prospects/add-prospect">
+                                        <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
+                                            <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Add new prospect
+                                        </span>
+                                    </Link>
+
+                                    <Link href="">
+                                        <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
+                                            <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all prospects
+                                        </span>
+                                    </Link>
                                 </div>
                             }
                         </div>
