@@ -55,17 +55,33 @@ const Header = () => {
     </header>
   );
 };
-const handleTypeClick = () => {
-  console.log("Hello WOlrd");
-};
+
 const HandleType = () => {
+  const [type, setType] = useState(true)
+const handleTypeClick = () => {
+  setType(!type)
+};
   return (
     <section
-      className="flex bg-[#62909F] w-24 m-auto rounded-xl justify-center  mt-6"
+      className="flex bg-[#62909F] w-[156px] h-[46px]  m-auto rounded-full text-white text-lg  justify-between p-2 mt-6"
       onClick={handleTypeClick}
     >
-      <button className="border m-1">Rent</button>
-      <button>Sell</button>
+      <div className="cursor-pointer flex justify-between w-full transition-all">
+        <button
+          className={` w-1/2 mr-1 ${
+            type ? "bg-[#386A8B] rounded-full" : "bg-[#62909F]"
+          }`}
+        >
+          Rent
+        </button>
+        <button
+          className={` w-1/2 ml-1 ${
+            type ? "bg-[#62909F] " : "bg-[#386A8B] rounded-full"
+          }`}
+        >
+          Sell
+        </button>
+      </div>
     </section>
   );
 };

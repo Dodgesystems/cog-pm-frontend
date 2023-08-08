@@ -15,6 +15,7 @@
     "@chakra-ui/stepper": "^2.2.0",
     "@reduxjs/toolkit": "^1.9.3",
     "axios": "^1.4.0",
+    "classcat": "^5.0.4",
     "eslint-config-next": "13.2.4",
     "json-server": "^0.17.3",
     "mathjs": "^11.8.0",
