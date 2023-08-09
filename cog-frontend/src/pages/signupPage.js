@@ -78,20 +78,20 @@ function signupPage() {
             >
               <option>Selected category</option>
               <option
-                value="Renter/Buyer"
+                value="manager"
                 name="role"
                 id="role"
                 className="text-black"
               >
-                Renter/Buyer
+               Manager
               </option>
               <option
                 className="text-black"
-                value="Property manager/owner"
+                value="client"
                 name="role"
                 id="role"
               >
-                Property manager/owner
+                Client
               </option>
             </select>
           </section>
