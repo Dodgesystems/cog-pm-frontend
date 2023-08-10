@@ -3,17 +3,30 @@ import React, { Fragment } from 'react'
 
 const ClientDetails = ({ 
     subStage,
+    upload,
+    checklist,
     clientType,
-    setClientType
+    clientName,
+    setUpload,
+    setChecklist,
+    setClientType,
+    setClientName
 }) => {
-  return (
-    <div>
-        {subStage == 1 && <ClientType />}
-        {subStage == 2 && <ClientName />}
-        {subStage == 3 && <VerificationChecklist />}
-        {subStage == 4 && <VerificationUpload />}
-    </div>
-  )
+    const getStage = () => {
+        switch(subStage) {
+            case 1: 
+                return <ClientType clientType={clientType} setClientType={setClientType} />
+            case 2:
+                return <ClientName clientName={clientName} setClientName={setClientName} />
+            case 3:
+                return <VerificationChecklist clientType={clientType} checklist={checklist} setChecklist={setChecklist} />
+            case 4:
+                return <VerificationUpload upload={upload} setUpload={setUpload} />
+            default:
+                return <ClientType clientType={clientType} setClientType={setClientType} />
+        }
+    }
+  return getStage()
 }
 
 export default ClientDetails
@@ -33,7 +46,7 @@ const Wrapper = ({ children, header, subHead }) => {
     )
 }
 
-const ClientType = () => {
+const ClientType = ({ clientType, setClientType }) => {
     return (
         <Wrapper 
             header="Client type" 
@@ -41,12 +54,26 @@ const ClientType = () => {
         >
             <div>
                 <div className="mb-10">
-                    <input type="radio" name="type" className="cursor-pointer mr-2" />
+                    <input 
+                        type="radio" 
+                        name="type" 
+                        value="company" 
+                        className="cursor-pointer mr-2" 
+                        checked={clientType === "company"}
+                        onChange={e => setClientType(e.target.value)}
+                    />
                     <span>Company/organization</span>
                 </div>
 
                 <div>
-                    <input type="radio" name="type" className="cursor-pointer mr-2" />
+                    <input 
+                        type="radio" 
+                        name="type" 
+                        value="induvidual" 
+                        className="cursor-pointer mr-2" 
+                        checked={clientType === "induvidual"}
+                        onChange={e => setClientType(e.target.value)}
+                    />
                     <span>Individual</span>
                 </div>
             </div>
@@ -54,7 +81,7 @@ const ClientType = () => {
     )
 }
 
-const ClientName = () => {
+const ClientName = ({ clientName, setClientName }) => {
     return (
         <Wrapper 
             header="Client name" 
@@ -65,7 +92,9 @@ const ClientName = () => {
                     <p className="font-semibold opacity-70">Client name</p>
                     <input 
                         type="text" 
+                        value={clientName}
                         placeholder="Enter state"
+                        onChange={e => setClientName(e.target.value)}
                         className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
                     />
                 </li>
@@ -74,35 +103,118 @@ const ClientName = () => {
     )
 }
 
-const VerificationChecklist = () => {
-    const list = ["CAC Incorporation Certificate", "Tax certificate", "Credit report"]
+const VerificationChecklist = ({ clientType, checklist, setChecklist }) => {
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+
+        setChecklist((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }))
+    }
+
     return (
         <Wrapper 
             header="Verification checklist" 
             subHead="Select identity verification type"
         >
             <div className="grid gap-4">
-                {list.map((item, i) => (
-                    <div key={i}>
-                        <input 
-                            type="checkbox" 
-                            className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
-                        />
-                        <span>{item}</span>
-                    </div>
-                ))}
+                {clientType === "company" && (
+                    <Fragment>
+                        <div>
+                            <input 
+                                name="CAC"
+                                type="checkbox" 
+                                value={checklist.CAC}
+                                onChange={handleInputChange}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>CAC Incorporation Certificate</span>
+                        </div>
+                        <div>
+                            <input 
+                                name="tax"
+                                type="checkbox" 
+                                value={checklist.tax}
+                                onChange={handleInputChange}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>Tax certificate</span>
+                        </div>
+                        <div>
+                            <input 
+                                type="checkbox" 
+                                name="creditReport"
+                                value={checklist.creditReport}
+                                onChange={handleInputChange}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>Credit report</span>
+                        </div>
+                    </Fragment>
+                )}
+                {clientType === "induvidual" && (
+                    <Fragment>
+                        <div>
+                            <input 
+                                name="identity"
+                                type="checkbox" 
+                                value={checklist.identity}
+                                onChange={handleInputChange}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>National identity certificate e.g International passport, NIN etc</span>
+                        </div>
+                        <div>
+                            <input 
+                                type="checkbox" 
+                                name="creditReportTwo"
+                                onChange={handleInputChange}
+                                value={checklist.creditReportTwo}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>Credit report</span>
+                        </div>
+                        <div>
+                            <input 
+                                type="checkbox" 
+                                name="confirmation"
+                                onChange={handleInputChange}
+                                value={checklist.confirmation}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>Employment confirmation</span>
+                        </div>
+                        <div>
+                            <input 
+                                type="checkbox" 
+                                name="policeReport"
+                                onChange={handleInputChange}
+                                value={checklist.policeReport}
+                                className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent- h-5 w-5 border border-[#B1B1B4] bg-[#E2E4F0] rounded-sm mr-2"
+                            />
+                            <span>Police report</span>
+                        </div>
+                    </Fragment>
+                )}                
             </div>
         </Wrapper>
     )
 }
 
-const VerificationUpload = () => {
+const VerificationUpload = ({ upload, setUpload }) => {
+    const handleFile = (e) => {
+        const file = e.target.files[0]
+        const url = URL.createObjectURL(file)
+    
+        setUpload(url)
+      }
     return (
         <Wrapper 
             header="Verification upload" 
             subHead="Upload identity verification selection"
         >
-            <input type="file" id="file" className="hidden" />
+            <input type="file" id="file" className="hidden" onChange={handleFile} />
             <label htmlFor="file" className="border border-dashed border-primary p-4 flex items-center gap-12 cursor-pointer">
                 <Image 
                     src="/assets/icons/download-icon.png"

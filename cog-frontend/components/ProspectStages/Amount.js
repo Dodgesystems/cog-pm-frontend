@@ -1,13 +1,27 @@
 import React, { Fragment } from 'react'
 
-const Amount = ({ subStage }) => {
-  return (
-    <div>
-      {subStage === 1 && <TotalAmount />}
-      {subStage === 2 && <RenewalAmount />}
-      {subStage === 3 && <AgreementPeriod />}
-    </div>
-  )
+const Amount = ({ 
+  subStage,
+  totalAmount,
+  renewalAmount,
+  agreementPeriod,
+  setTotalAmount,
+  setRenewalAmount,
+  setAgreementPeriod,
+}) => {
+  const getStage = () => {
+    switch (subStage) {
+      case 1: 
+        return <TotalAmount totalAmount={totalAmount} setTotalAmount={setTotalAmount} />
+      case 2:
+        return <RenewalAmount renewalAmount={renewalAmount} setRenewalAmount={setRenewalAmount} />
+      case 3:
+        return <AgreementPeriod agreementPeriod={agreementPeriod} setAgreementPeriod={setAgreementPeriod} />
+      default:
+        return <TotalAmount totalAmount={totalAmount} setTotalAmount={setTotalAmount} /> 
+    }
+  }
+  return getStage()
 }
 
 export default Amount
@@ -27,7 +41,7 @@ const Wrapper = ({ children, header, subHead }) => {
   )
 }
 
-const TotalAmount = () => {
+const TotalAmount = ({ totalAmount, setTotalAmount }) => {
   return (
     <Wrapper
       header="Total amount for new tenant or buyer"
@@ -37,9 +51,11 @@ const TotalAmount = () => {
           <li>
               <p className="font-semibold opacity-70">Enter amount</p>
               <input 
-                  type="text" 
-                  placeholder="Enter amount"
-                  className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+                type="text" 
+                value={totalAmount}
+                placeholder="Enter amount"
+                onChange={e => setTotalAmount(e.target.value)}
+                className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
           </li>
       </ul>
@@ -47,7 +63,16 @@ const TotalAmount = () => {
   )
 }
 
-const RenewalAmount = () => {
+const RenewalAmount = ({ renewalAmount, setRenewalAmount }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+  
+    setRenewalAmount((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
+
   return (
     <Wrapper
       header="Renewal amount and recurring fees"
@@ -58,6 +83,9 @@ const RenewalAmount = () => {
               <p className="font-semibold opacity-70">Subsequent rental amount</p>
               <input 
                   type="text" 
+                  name="subsequent"
+                  onChange={handleInputChange}
+                  value={renewalAmount.subsequent}
                   placeholder="Enter rental amount"
                   className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
@@ -67,6 +95,9 @@ const RenewalAmount = () => {
               <p className="font-semibold opacity-70">Recurring fees</p>
               <input 
                   type="text" 
+                  name="recurring"
+                  onChange={handleInputChange}
+                  value={renewalAmount.recurring}
                   placeholder="Enter recurring fees"
                   className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
@@ -76,7 +107,7 @@ const RenewalAmount = () => {
   )
 }
 
-const AgreementPeriod = () => {
+const AgreementPeriod = ({ agreementPeriod, setAgreementPeriod }) => {
   return (
     <Wrapper
       header="Total agreement period"
@@ -87,7 +118,9 @@ const AgreementPeriod = () => {
               <p className="font-semibold opacity-70">Duration</p>
               <input 
                 type="text" 
+                value={agreementPeriod}
                 placeholder="Enter duration"
+                onChange={e => setAgreementPeriod(e.target.value)}
                 className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
           </li>

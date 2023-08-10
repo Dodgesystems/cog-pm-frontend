@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SigningDate = () => {
+const SigningDate = ({ signingDate, setSigningDate }) => {
   return (
     <div className="flex flex-col gap-12">
       <div>
@@ -13,7 +13,9 @@ const SigningDate = () => {
           <p className="font-semibold opacity-70">Potential move in date</p>
           <input 
             type="date" 
+            value={signingDate}
             placeholder="Enter date"
+            onChange={e => setSigningDate(e.target.value)}
             className="uppercase border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>

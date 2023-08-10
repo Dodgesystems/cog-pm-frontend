@@ -1,15 +1,35 @@
 import React, { Fragment } from 'react'
 
-const PropertyDetails = ({ subStage }) => {
-  return (
-    <div>
-        {subStage == 1 && <ApplicationType />}
-        {subStage == 2 && <PropertyType />}
-        {subStage == 3 && <Location />}
-        {subStage == 4 && <UnitID />}
-        {subStage == 5 && <UnitFeatures />}
-    </div>
-  )
+const PropertyDetails = ({
+  subStage,
+  unitID,
+  location,
+  propertyType,
+  unitFeatures,
+  applicationType,
+  setUnitID,
+  setLocation,
+  setPropertyType,
+  setUnitFeatures,
+  setApplicationType,
+}) => {
+  const getStage = () => {
+    switch(subStage) {
+      case 1:
+        return <ApplicationType applicationType={applicationType} setApplicationType={setApplicationType} />
+      case 2:
+        return <PropertyType propertyType={propertyType} setPropertyType={setPropertyType} />
+      case 3:
+        return <Location location={location} setLocation={setLocation} />
+      case 4:
+        return <UnitID unitID={unitID} setUnitID={setUnitID} />
+      case 5:
+        return <UnitFeatures unitFeatures={unitFeatures} setUnitFeatures={setUnitFeatures} />
+      default:
+        return <ApplicationType applicationType={applicationType} setApplicationType={setApplicationType} />
+    }
+  }
+  return getStage()
 }
 
 export default PropertyDetails
@@ -29,7 +49,7 @@ const Wrapper = ({ children, header, subHead }) => {
     )
 }
 
-const ApplicationType = () => {
+const ApplicationType = ({ applicationType, setApplicationType }) => {
   return (
     <Wrapper
       header="Application Type"
@@ -38,7 +58,12 @@ const ApplicationType = () => {
       <ul className="list-disc ml-6">
           <li>
               <p className="font-semibold opacity-70">Application type</p>
-              <select id="" className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4">
+              <select 
+                value={applicationType} 
+                onChange={e => setApplicationType(e.target.value)} 
+                className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+              >
+                <option value="" className="pointer-events-none">Select application type</option>
                 <option value="Property rental">Property rental</option>
                 <option value="Property purchase">Property purchase</option>
               </select>
@@ -48,8 +73,8 @@ const ApplicationType = () => {
   )
 }
 
-const PropertyType = () => {
-  const inputs = ["Flat/appartment", "Warehouse/storage facility", "Whole home", "Office space", "Warehouse/storage facility", "Retail shop space"]
+const PropertyType = ({ propertyType, setPropertyType }) => {
+  const inputs = ["Flat/appartment", "Warehouse/storage facility", "Single dwelling", "Office space", "Retail shop space"]
   return (
     <Wrapper
       header="Property type"
@@ -58,7 +83,14 @@ const PropertyType = () => {
       <div className="flex flex-col gap-4 mb-8">
         {inputs.map((input, i) => (
           <div key={i}>
-            <input type="radio" name="type" className="cursor-pointer mr-2" />
+            <input 
+              name="type" 
+              type="radio"
+              value={input}
+              className="cursor-pointer mr-2" 
+              checked={propertyType === input}
+              onChange={e => setPropertyType(e.target.value)}
+            />
             <span>{input}</span>
           </div>
         ))}
@@ -67,7 +99,16 @@ const PropertyType = () => {
   )
 }
 
-const Location = () => {
+const Location = ({ location, setLocation }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+  
+    setLocation((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
+
   return (
     <Wrapper
       header="Location"
@@ -78,7 +119,10 @@ const Location = () => {
               <p className="font-semibold opacity-70">State</p>
               <input 
                 type="text" 
+                name="state"
+                value={location.state}
                 placeholder="Enter state"
+                onChange={handleInputChange}
                 className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
           </li>
@@ -86,14 +130,20 @@ const Location = () => {
               <p className="font-semibold opacity-70">Local Governmental Area</p>
               <input 
                 type="text" 
+                name="LGA"
+                value={location.LGA}
                 placeholder="Enter LGA"
+                onChange={handleInputChange}
                 className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
           </li>
           <li>
               <p className="font-semibold opacity-70">Landmark/ward</p>
               <input 
-                type="text" 
+                type="text"
+                name="ward" 
+                value={location.ward}
+                onChange={handleInputChange}
                 placeholder="Enter landmark/ward"
                 className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
@@ -103,7 +153,7 @@ const Location = () => {
   )
 }
 
-const UnitID = () => {
+const UnitID = ({ unitID, setUnitID }) => {
   return (
     <Wrapper
       header="Unit ID"
@@ -114,9 +164,11 @@ const UnitID = () => {
           <li>
               <p className="font-semibold opacity-70">Unit ID</p>
               <input 
-                  type="text" 
-                  placeholder="Enter unit ID"
-                  className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+                type="text" 
+                value={unitID}
+                placeholder="Enter unit ID"
+                onChange={e => setUnitID(e.target.value)}
+                className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
               />
           </li>
       </ul>
@@ -124,7 +176,15 @@ const UnitID = () => {
   )
 }
 
-const UnitFeatures = () => {
+const UnitFeatures = ({ unitFeatures, setUnitFeatures }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+  
+    setUnitFeatures((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
   return (
     <Wrapper
       header="Unit features"
@@ -135,6 +195,9 @@ const UnitFeatures = () => {
             <p className="font-semibold opacity-70">Number of sitting rooms</p>
             <input 
               type="text" 
+              name="sittingRooms"
+              value={unitFeatures.sittingRooms}
+              onChange={handleInputChange}
               placeholder="Enter number of sitting rooms"
               className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
             />
@@ -143,6 +206,9 @@ const UnitFeatures = () => {
             <p className="font-semibold opacity-70">Number of bedrooms</p>
             <input 
               type="text" 
+              name="bedRooms"
+              value={unitFeatures.bedRooms}
+              onChange={handleInputChange}
               placeholder="Enter number of bedrooms"
               className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
             />
@@ -151,6 +217,9 @@ const UnitFeatures = () => {
             <p className="font-semibold opacity-70">Number of rest rooms</p>
             <input 
               type="text" 
+              name="restRooms"
+              value={unitFeatures.restRooms}
+              onChange={handleInputChange}
               placeholder="Enter number of rest rooms"
               className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
             />

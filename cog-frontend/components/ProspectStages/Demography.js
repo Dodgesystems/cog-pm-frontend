@@ -1,13 +1,53 @@
 import React, { Fragment, useState } from 'react'
 
-const Demography = ({ subStage }) => {
+const Demography = ({ 
+  subStage, 
+  clientType,
+  tribe,
+  gender,
+  religion,
+  ageRange,
+  occupation,
+  industryType,
+  establishment,
+  setTribe,
+  setGender,
+  setReligion,
+  setAgeRange,
+  setOccupation,
+  setIndustryType,
+  setEstablishment
+}) => {
+  const getStageOne = () => {
+    switch (subStage) {
+      case 1: 
+        return <Gender gender={gender} setGender={setGender} />
+      case 2:
+        return <Religion religion={religion} setReligion={setReligion} />
+      case 3:
+        return <Tribe tribe={tribe} setTribe={setTribe} />
+      case 4:
+        return <Occupation occupation={occupation} setOccupation={setOccupation} />
+      case 5:
+        return <AgeRange ageRange={ageRange} setAgeRange={setAgeRange} />
+      default:
+        return <Gender gender={gender} setGender={setGender} /> 
+    }
+  }
+  const getStageTwo = () => {
+    switch (subStage) {
+      case 1:
+        return <IndustryType industryType={industryType} setIndustryType={setIndustryType} />
+      case 2:
+        return <YearOfEstablishment establishment={establishment} setEstablishment={setEstablishment} />
+      default:
+        return <IndustryType industryType={industryType} setIndustryType={setIndustryType} />
+    }
+  }
+
   return (
     <div>
-      {subStage === 1 && <Gender />}
-      {subStage === 2 && <Religion />}
-      {subStage === 3 && <Tribe />}
-      {subStage === 4 && <Occupation />}
-      {subStage === 5 && <AgeRange />}
+      {clientType === "induvidual" ? getStageOne() : getStageTwo()}
     </div>
   )
 }
@@ -29,62 +69,69 @@ const Wrapper = ({ children, subHead }) => {
   )
 }
 
-const Gender = () => {
+const Gender = ({ gender, setGender }) => {
+  const genders = ["Male", "Female"]
   return (
     <Wrapper subHead="Select the client’s gender">
-      <div>
-          <div className="mb-10">
-              <input type="radio" name="gender" className="cursor-pointer mr-2" />
-              <span>Male</span>
-          </div>
-
-          <div>
-              <input type="radio" name="gender" className="cursor-pointer mr-2" />
-              <span>Female</span>
-          </div>
+      <div className="grid gap-6 mb-6">
+          {genders.map((g, i) => (
+            <div>
+                <input 
+                  type="radio" 
+                  name="gender" 
+                  value={g}
+                  checked={gender === g}
+                  className="cursor-pointer mr-2" 
+                  onChange={e => setGender(e.target.value)} 
+                />
+                <span>{g}</span>
+            </div>
+          ))}
       </div>
     </Wrapper>
   )
 }
 
-const Religion = () => {
+const Religion = ({ religion, setReligion }) => {
+  const religions = ["Christianity", "Islam", "African traditionalist", "Prefer not to disclose"]
   return (
     <Wrapper subHead="Kindly select the religious background of the individual prospect. This field is optional">
       <div className="grid gap-6 mb-6">
-          <div>
-              <input type="radio" name="religion" className="cursor-pointer mr-2" />
-              <span>Islam</span>
-          </div>
-
-          <div>
-              <input type="radio" name="religion" className="cursor-pointer mr-2" />
-              <span>Christianity</span>
-          </div>
-
-          <div>
-              <input type="radio" name="religion" className="cursor-pointer mr-2" />
-              <span>African traditionalist</span>
-          </div>
-
-          <div>
-              <input type="radio" name="religion" className="cursor-pointer mr-2" />
-              <span>Prefer nor to disclose</span>
-          </div>
+          {religions.map((r, i) => (
+            <div key={i}>
+              <input 
+                type="radio" 
+                name="religion" 
+                value={r}
+                checked={religion === r}
+                className="cursor-pointer mr-2"
+                onChange={e => setReligion(e.target.value)}
+              />
+              <span>{r}</span>
+            </div>
+          ))}
       </div>
     </Wrapper>
   )
 }
 
-const Tribe = () => {
+const Tribe = ({ tribe, setTribe }) => {
   const [checked, setChecked] = useState(false)
   const tribes = ["Yoruba", "Fulani", "Hausa", "Igbo", "Tiv", "Urhobo/Itsekiri"]
   return (
     <Wrapper subHead="Kindly select the ethnic background of the individual prospect. This field is optional">
       <div className="grid gap-6 mb-6">
-        {tribes.map((tribe, i) => (
+        {tribes.map((t, i) => (
           <div key={i}>
-              <input type="radio" name="tribe" className="cursor-pointer mr-2" />
-              <span>{tribe}</span>
+              <input 
+                type="radio" 
+                name="tribe" 
+                value={t}
+                checked={tribe === t}
+                className="cursor-pointer mr-2" 
+                onChange={e => setTribe(e.target.value)}
+              />
+              <span>{t}</span>
           </div>
         ))}
 
@@ -104,6 +151,7 @@ const Tribe = () => {
                 type="text" 
                 placeholder="Enter other tribe"
                 className="block border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-2"
+                onChange={e => setTribe(e.target.value)}
               />
             )}
           </div>
@@ -113,25 +161,40 @@ const Tribe = () => {
   )
 }
 
-const Occupation = () => {
+const Occupation = ({ occupation, setOccupation }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+  
+    setOccupation((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
+
   return (
     <Wrapper subHead="Kindly enter the professional background of the individual prospect. This field is optional">
       <ul className="list-disc ml-6 mb-8 grid gap-8">
         <li>
           <p className="font-semibold opacity-70">Occupation</p>
           <input 
-              type="text" 
-              placeholder="Enter occupation"
-              className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+            type="text" 
+            name="occupation"
+            placeholder="Enter occupation"
+            value={occupation.occupation}
+            onChange={handleInputChange}
+            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>
 
         <li>
           <p className="font-semibold opacity-70">Industry type</p>
           <input 
-              type="text" 
-              placeholder="Enter industry type"
-              className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+            type="text" 
+            name="industryType"
+            onChange={handleInputChange}
+            value={occupation.industryType}
+            placeholder="Enter industry type"
+            className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
           />
         </li>
       </ul>
@@ -139,18 +202,67 @@ const Occupation = () => {
   )
 }
 
-const AgeRange = () => {
+const AgeRange = ({ ageRange, setAgeRange }) => {
   const ranges = ["18-23", "24-29", "30-35", "36-41", "42-47", "54-59", "60-64", "65-70", "71 and above"]
   return (
     <Wrapper subHead="Select the age range of the prospect">
       <div className="grid gap-6 mb-6">
-        {ranges.map((tribe, i) => (
+        {ranges.map((range, i) => (
           <div key={i}>
-              <input type="radio" name="tribe" className="cursor-pointer mr-2" />
-              <span>{tribe}</span>
+              <input 
+                type="radio" 
+                name="range" 
+                value={range}
+                className="cursor-pointer mr-2" 
+                checked={ageRange === range}
+                onChange={e => setAgeRange(e.target.value)}
+              />
+              <span>{range}</span>
           </div>
         ))}
       </div>
+    </Wrapper>
+  )
+}
+
+const IndustryType = ({ industryType, setIndustryType }) => {
+  const industryTypes = ["Financial services", "Health, medical and pharmaceutical", "Governmental organization", "NGO and civic society organization", "Construction and mining services", "Technology, media and telecommunications", "Industrial and manufacturing", "Education and training", "Retail and physical stores", "Logistics, procurement and supply-chain", "Agriculture", "Automotive services"]
+  return (
+    <Wrapper subHead="This is where you select the business category of your enterprise client">
+      <div className="grid gap-6 mb-6">
+        {industryTypes.map((type, i) => (
+          <div key={i}>
+            <input 
+              type="radio" 
+              name="type" 
+              value={type}
+              checked={industryType === type}
+              className="cursor-pointer mr-2" 
+              onChange={e => setIndustryType(e.target.value)}
+            />
+            <span>{type}</span>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  )
+}
+
+const YearOfEstablishment = ({ establishment, setEstablishment }) => {
+  return (
+    <Wrapper subHead="This is where you enter the establishment date of your enterprise client">
+      <ul className="list-disc ml-6">
+          <li>
+              <p className="font-semibold opacity-70">Enter year of establishment</p>
+              <input 
+                type="date"
+                value={establishment}
+                placeholder="Enter year of establishment"
+                onChange={e => setEstablishment(e.target.value)} 
+                className="uppercase border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+              />
+          </li>
+      </ul>
     </Wrapper>
   )
 }
