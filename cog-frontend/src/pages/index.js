@@ -57,10 +57,10 @@ const Header = () => {
 };
 
 const HandleType = () => {
-  const [type, setType] = useState(true)
-const handleTypeClick = () => {
-  setType(!type)
-};
+  const [type, setType] = useState(true);
+  const handleTypeClick = () => {
+    setType(!type);
+  };
   return (
     <section
       className="flex bg-[#62909F] w-[156px] h-[46px]  m-auto rounded-full text-white text-lg  justify-between p-2 mt-6"

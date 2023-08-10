@@ -20,14 +20,7 @@ function loginPage() {
     });
   }
   const handleSubmit = async (e) => {
-    // const response = await axios
-    //   .post("https://c-o-g.onrender.com/api/v1/auth/login?role=manager", login)
-    //   .then(response.data);
     e.preventDefault();
-    // signIn("credentials", {
-    //   email: login.email,
-    //   password: login.password,
-    // });
     try {
       const response = await axios.post(
         "https://c-o-g.onrender.com/api/v1/auth/login",
@@ -35,17 +28,13 @@ function loginPage() {
       );
 
       if (response.status === 200) {
-        // alert("Logged In Successfully");
         localStorage.setItem("token", response.data.token);
         router.push("/");
-        // console.log(response.data.token);
       }
     } catch (error) {
-      // Handle error, such as displaying an error message to the user
       console.log(error);
     }
   };
-  // console.log(login);
   return (
     <section className="flex flex-col items-center justify-center w-1/2 m-auto my-auto h-screen">
       <section>
