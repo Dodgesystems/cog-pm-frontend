@@ -4,6 +4,7 @@ const Summary = ({ prospect }) => {
   const {
     clientName,
     clientType,
+    clientContact,
     gender,
     religion,
     tribe,
@@ -37,12 +38,12 @@ const Summary = ({ prospect }) => {
                 
                 <div className="flex flex-col">
                   <small>Email address:</small>
-                  <span></span>
+                  <span>{clientContact.email}</span>
                 </div>
 
                 <div className="flex flex-col">
                   <small>Phone number:</small>
-                  <span></span>
+                  <span>{clientContact.number}</span>
                 </div>
 
                 <div className="flex flex-col">

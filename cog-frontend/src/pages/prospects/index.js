@@ -73,7 +73,7 @@ const Prospects = () => {
                                         </span>
                                     </Link>
 
-                                    <Link href="">
+                                    <Link href="prospects/all-prospects">
                                         <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
                                             <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all prospects
                                         </span>

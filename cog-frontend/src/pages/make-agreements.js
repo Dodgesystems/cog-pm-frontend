@@ -1184,11 +1184,9 @@ const TermsSecurityIrm = ({ dispatch }) => {
 }
 
 const Summary = () => {
-
-
     return (
         <section className="flex gap-x-4 flex-1">
-            <div className="border-[1px] border-[#62909F] p-6 flex-1">
+            {/* <div className="border-[1px] border-[#62909F] p-6 flex-1">
                 <div>
                     <header>
                         <h1 className="font-bold text-[20px] text-[#4B4B4B] mb-5">Agreement summary</h1>
@@ -1229,7 +1227,241 @@ const Summary = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
+            <article className="flex flex-col gap-16 flex-1">
+                <h3 className="text-3xl text-[#2255A0] font-semibold">Agreement summary</h3>
+                <p>This agreement between the seller and buyer for the sale of the property under terms and details stated therein:</p>
+
+                <div className="flex flex-col gap-10 w-full">
+                    <div>
+                        <h2 className="text-2xl font-medium">Buyer Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Client name:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Client type:</small>
+                                <span></span>
+                            </div>
+                            
+                            <div className="flex flex-col">
+                                <small>Email address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Phone number:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Agreement date:</small>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Seller Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Seller name:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Landlord type:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Property name:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Phone number:</small>
+                                <div></div>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Address:</small>
+                                <span></span>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Property Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Property type:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Property address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Agreement type:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Premises physical specifics:</small>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Terms</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Purchase amount:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Other fees:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Payment due date:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Security deposit:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Title and Transfer:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Services:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Use of property:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Physical condition:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Default:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Closing:</small>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Property Manager Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Property manager name:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Property manager type:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Email address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Phone number:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Address:</small>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Property Manager Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 gap-6">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Governing Law</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 gap-6">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-2xl font-medium">Witness/Guarantor Details</h2>
+
+                        <div className="border border-borderGrey rounded-lg p-4 mt-4 flex flex-col gap-6">
+                            <div className="flex flex-col">
+                                <small>Guarantor name:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Email address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Phone number:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Address:</small>
+                                <span></span>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <small>Acknowledgement date:</small>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
             <div className="flex flex-col gap-y-4">
                 <button className="bg-[#386A8B] text-[15px] items-center flex w-[170px] text-white rounded-[4px] pl-6 py-2 pr-8"><span className="flex-1 text-center">Submit</span></button>
                 <button className="border-[#386A8B] border-[1px] text-[15px] gap-x-4 items-center flex w-[170px] rounded-[4px] pl-6 py-2 pr-8"><span className="flex-1 text-center">Edit</span></button>

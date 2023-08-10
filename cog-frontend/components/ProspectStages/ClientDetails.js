@@ -7,10 +7,12 @@ const ClientDetails = ({
     checklist,
     clientType,
     clientName,
+    clientContact,
     setUpload,
     setChecklist,
     setClientType,
-    setClientName
+    setClientName,
+    setClientContact
 }) => {
     const getStage = () => {
         switch(subStage) {
@@ -19,8 +21,10 @@ const ClientDetails = ({
             case 2:
                 return <ClientName clientName={clientName} setClientName={setClientName} />
             case 3:
-                return <VerificationChecklist clientType={clientType} checklist={checklist} setChecklist={setChecklist} />
+                return <ClientContact clientContact={clientContact} setClientContact={setClientContact} />
             case 4:
+                return <VerificationChecklist clientType={clientType} checklist={checklist} setChecklist={setChecklist} />
+            case 5:
                 return <VerificationUpload upload={upload} setUpload={setUpload} />
             default:
                 return <ClientType clientType={clientType} setClientType={setClientType} />
@@ -95,6 +99,48 @@ const ClientName = ({ clientName, setClientName }) => {
                         value={clientName}
                         placeholder="Enter state"
                         onChange={e => setClientName(e.target.value)}
+                        className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+                    />
+                </li>
+            </ul>
+        </Wrapper>
+    )
+}
+const ClientContact = ({ clientContact, setClientContact }) => {
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+
+        setClientContact((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }))
+    }
+    return (
+        <Wrapper 
+            header="Client contact" 
+            subHead="This is where you enter the contact details of the prospect"
+        >
+            <ul className="grid gap-8 list-disc ml-6">
+                <li>
+                    <p className="font-semibold opacity-70">Email address</p>
+                    <input 
+                        type="email" 
+                        name="email"
+                        value={clientContact.email}
+                        placeholder="Enter email address"
+                        onChange={handleInputChange}
+                        className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
+                    />
+                </li>
+
+                <li>
+                    <p className="font-semibold opacity-70">Phone number</p>
+                    <input 
+                        type="text" 
+                        name="number"
+                        value={clientContact.number}
+                        onChange={handleInputChange}
+                        placeholder="Enter phone number"
                         className="border border-primary bg-[#F5F7F9] outline-none py-1 px-2 mt-4"
                     />
                 </li>

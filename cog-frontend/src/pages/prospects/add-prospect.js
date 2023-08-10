@@ -16,6 +16,10 @@ const addProspect = () => {
   // Client Details
   const [clientType, setClientType] = useState("company")
   const [clientName, setClientName] = useState("")
+  const [clientContact, setClientContact] = useState({
+    email: "",
+    number: ""
+  })
   const [checklist, setChecklist] = useState({
     CAC: "",
     tax: "",
@@ -68,6 +72,7 @@ const addProspect = () => {
   const prospect = {
     clientName,
     clientType,
+    clientContact,
     gender,
     religion,
     tribe,
@@ -87,6 +92,7 @@ const addProspect = () => {
       subStages: [
         "Client type",
         "Client name",
+        "Client contact",
         "Verification checklist",
         "Verification upload",
       ]
@@ -189,10 +195,12 @@ const addProspect = () => {
                   checklist={checklist} 
                   clientType={clientType}
                   clientName={clientName}
+                  clientContact={clientContact}
                   setUpload={setUpload}
                   setChecklist={setChecklist}
                   setClientType={setClientType}
                   setClientName={setClientName}
+                  setClientContact={setClientContact}
                 />
               )}
               {activeStage === 2 && (
