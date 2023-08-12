@@ -72,9 +72,11 @@ const Prospects = () => {
                                             <Image src="/assets/images/fi_add.svg" alt="Add Icon" width={20} height={20} /> Make offer
                                         </span>
                                     </Link>
-                                    <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
-                                        <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all offers
-                                    </span>
+                                    <Link href="/all-offers">
+                                        <span className="flex p-2 gap-x-2 hover:bg-[#D2F4FF] cursor-pointer whitespace-no-wrap" onClick={closePopupHandler}>
+                                            <Image src="/assets/images/fi_eye.svg" alt="Eye Icon" width={20} height={20} /> View all offers
+                                        </span>
+                                    </Link>
                                 </div>
                             }
                         </div>

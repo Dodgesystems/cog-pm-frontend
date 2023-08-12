@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { FiBell } from 'react-icons/fi'
 import { BsFilter } from 'react-icons/bs'
-import Tabs from '../../../components/Tabs'
-import Options from '../../../components/Options'
-import Dashboard from '../../../components/Layout/Dashboard'
-import { offline, online, prospects } from '../../../Data/placeholder'
+import Tabs from '../../components/Tabs'
+import Options from '../../components/Options'
+import Dashboard from '../../components/Layout/Dashboard'
+import { offline, offers } from '../../Data/placeholder'
 
-const AllProspects = () => {
+const AllOffers = () => {
   const [active, setActive] = useState(0)
-  const tabs = ["All prospects", "Rental", "For sale"]
+  const tabs = ["All offers", "Rentals", "For sale"]
 
   const handleClick = (index) => {
     setActive(index)
@@ -19,8 +19,8 @@ const AllProspects = () => {
         <section className="p-8">
             <header className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-3xl font-semibold">Prospect</h2>
-                    <h3 className="text-xl font-semibold opacity-50 mt-4">All Prospect</h3>
+                    <h2 className="text-3xl font-semibold">Offers</h2>
+                    <h3 className="text-xl font-semibold opacity-50 mt-4">All offers</h3>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -50,23 +50,23 @@ const AllProspects = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-6 mt-10 font-bold">
+                <div className="grid grid-cols-5 mt-10 font-bold">
                     <div className="flex items-center">
                         <input type="checkbox" className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent-primary h-5 w-5 border border-primary rounded-sm mr-2" />
-                        <span>Prospect ID</span>
+                        <span>Offer ID</span>
                     </div>
                     <span>Date</span>
                     <span>Client name</span>
-                    <span>Property name</span>
-                    <span>Source</span>
+                    <span>Property name</span>  
                     <span>Status</span>
                 </div>
 
                 <div className="grid text-left mt-6">
-                    {prospects.map((prospect, i) => (
-                        <Prospect 
+                    {offers.map((offer, i) => (
+                        <Offer 
                             key={i}
-                            data={prospect}
+                            data={offer}
+                            active={active}
                         />
                     ))}
                 </div>
@@ -76,44 +76,38 @@ const AllProspects = () => {
   )
 }
 
-export default AllProspects
+export default AllOffers
 
-const Prospect = ({ data }) => {
-    const { id, date, name, propertyName, source, status } = data
+const Offer = ({ data, active }) => {
+    let { id, date, name, propertyName, status } = data
     const [show, setShow] = useState(false)
-  
-    const type = () => {
-      if(source === "Online") {
-        return online
-      } else return offline
-    }
+
+    const type = () => offline
     const className = `w-full overflow-hidden text-ellipsis whitespace-nowrap`
     return (
-      <div className="grid grid-cols-6 gap-4 items-center justify-between py-4">
-        <div className="flex items-center text-primary">
-            <input type="checkbox" className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent-primary h-5 w-5 border border-primary rounded-sm mr-2" />
-            <span>{id}</span>
+        <div className="grid grid-cols-5 gap-4 items-center justify-between py-4">
+            <div className="flex items-center text-primary">
+                <input type="checkbox" className="cursor-pointer [&:not(input:checked)]:appearance-none outline-none accent-primary h-5 w-5 border border-primary rounded-sm mr-2" />
+                <span>{id}</span>
+            </div>
+
+            <span className={className}>{date}</span>
+
+            <span className={className}>{name}</span>
+
+            <span className={className}>{propertyName}</span>
+
+            <div className="flex items-center justify-between">
+                <span className={`border py-2 px-4 rounded-lg ${status === "Pending" ? "text-[#FFA902] border-[#FFA902] bg-[#FFA902] bg-opacity-30" : "text-[#049561] border-[#049561] bg-[#9FF1CA]"}`}>
+                    {status}
+                </span>
+                
+                <Options
+                    type={type}
+                    show={show}
+                    setShow={setShow}
+                />
+            </div>
         </div>
-
-        <span className={className}>{date}</span>
-
-        <span className={className}>{name}</span>
-
-        <span className={className}>{propertyName}</span>
-
-        <span className={className}>{source}</span>
-  
-        <div className="flex items-center justify-between">
-            <span className={`border py-2 px-4 rounded-lg ${status === "Pending" ? "text-[#FFA902] border-[#FFA902] bg-[#FFA902] bg-opacity-30" : "text-[#049561] border-[#049561] bg-[#9FF1CA]"}`}>
-                {status}
-            </span>
-
-            <Options 
-                type={type}
-                show={show}
-                setShow={setShow}
-            />
-        </div>
-      </div>
     )
 }
