@@ -13,7 +13,6 @@ const Navbar = () => {
             <Link href="/" className="px-4 cursor-pointer">
               Home
             </Link>
-            <Link href="/for-rentals">For buyers/rentals</Link>
             <Link href="/for-rentals">For buyers/renters</Link>
             {/* EDITED THIS TO SHIFT THE 'FOR RENTALS PAGE TO THE SRC DIRECTORY */}
             <Link href="/managers">For property managers/owners</Link>
