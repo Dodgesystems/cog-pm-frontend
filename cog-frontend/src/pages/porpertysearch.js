@@ -6,133 +6,88 @@ import houses2 from '../..//public/assets/images/houses3.png'
 import head from '../../public/assets/images/fi_users.svg'
 import hash from "../../public/assets/images/fi_hash.png"
 import rss from '../../public/assets/images/fi_rss.png'
+import Link from "next/link";
+import { data } from "../../data.js";
+import { useRouter } from "next/router";
 const porpertysearch = () => {
+   const router =useRouter();
+   const {itemid}= router.query;
+   console.log(data)
   return (
     <div>
-        <div className="ml-16">
-            <h1 className="font-bold  font-size-{40}  mt-16 text-{150}">Propertysearch</h1>
+        <div className="_property">
+            <h1 className="font-bold   mt-8 text-{150}">Propertysearch</h1>
             <div className="flex">
-               <div className="flex flex-col justify-between mt-5">
-                  <div className="" >
-                     <p className="mb-3">Featured properties</p>
-                     <div className="flex gap-8">
-                        <div>
-                           <div>
-                              <div className="relative">
-                                 <Image src={prop}
-                                    width={280}
-                                    height={40}
-                                    className=""
+               <div className="  mt-5">
+                  {
+                     data.map(item => {
+                        return(
+                           <div className="grid " key={item.id} >
+                            <div className="flex-col justify-between  pt-20">
+                              <div  className="mb-3">{item.tag}</div>
+                              <div className="flex gap-6 justify-between">
+                                 <div className="relative">
+                                    <Image src={houses}
+                                       width={320}
+                                       height={40}
+                                       className=""
                                     />
                                  <span className="absolute top-3 right-3 ">
-                                    <button className="bg-white rounded-full  w-28 text-sm text-center ">Click to view </button>
+                                    <button className="bg-white rounded-full  w-28 text-sm text-center ">
+                                          <Link  href={`for-rentals/properties/${item.id}`}>
+                                             Click to view
+                                          </Link>
+                                       </button>
                                  </span>
+                                 <h1 className="_property3">
+                                    <span>Property name:</span>
+                                    <span>Aegon warehouse</span>
+                                 </h1>
+                                 <h1 className="_property3">
+                                    <span>Property name:</span>
+                                    <span>Aegon warehouse</span>
+                                 </h1>
+                                 <h1 className="_property3">
+                                    <span>Property name:</span>
+                                    <span>Aegon warehouse</span>
+                                 </h1>
                               </div>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                           </div>
-                        </div>
-
-                        <div>
-                           <div>
-                              <div className="relative">
+                           <div className="relative">
                                  <Image src={houses}
-                                    width={280}
+                                    width={320}
                                     height={40}
                                     className=""
                                     />
                                  <span className="absolute top-3 right-3 ">
-                                     <button className="bg-white rounded-full  w-28 text-sm text-center ">Click to view </button>
-                                  </span>
-                              </div>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div className="self-center mb-28">
-                     <p className="mb-8">Available listing</p>
-                     <div className="flex gap-8">
-                        <div>
-                           <div>
-                              <div className="relative">
-                                 <Image src={houses1}
-                                    width={280}
-                                    height={40}
-                                    className=""
-                                    />
-                                 <span className="absolute top-3 right-3 ">
-                                     <button className="bg-white rounded-full  w-28 text-sm text-center ">Click to view </button>
+                                    <button className="bg-white rounded-full  w-28 text-sm text-center ">
+                                          <Link  href={`for-rentals/properties/${item.id}`}>
+                                          Click to view
+                                          </Link>                                       
+                                       </button>
                                  </span>
-                              </div>
-                            
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                           </div>
-                        </div>
 
-                        <div>
-                           <div>
-                              <div className="relative">
-                                 <Image src={houses2}
-                                    width={280}
-                                    height={40}
-                                    className=""
-                                    />
-                                 <span className="absolute top-3 right-3 ">
-                                     <button className="bg-white rounded-full  w-28 text-sm text-center ">Click to view </button>
-                                  </span>
+                                 <h1 className="_property3">
+                              <span>Property name:</span>
+                              <span>Aegon warehouse</span>
+                              </h1>
+                              <h1 className="_property3">
+                              <span>Property name:</span>
+                              <span>Aegon warehouse</span>
+                              </h1>
+                              <h1 className="_property3">
+                              <span>Property name:</span>
+                              <span>Aegon warehouse</span>
+                              </h1>
                               </div>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
-                              <h1 className="_property3">
-                              <span>Property name:</span>
-                              <span>Aegon warehouse</span>
-                              </h1>
+                              </div>
                            </div>
-                        </div>
-                     </div>
+                        </div>  
+                        )
+                     })
+                  }
                   </div>
-                </div>
-                <div className="m-12 grid grid-rows-2 grid-flow-col  helo mr-64 mt-12">
+            
+                <div className="m-12 grid grid-rows-2 grid-flow-col  helo mr-64 mt-32">
                   <div className="ml-8 mb-32">
                     <div className="border rounded-lg  bg-[#F5F5F5]  h-96 flex flex-col justify-around pt-2 pl-8 w-64 ">
                      <p>Search properties</p>
@@ -161,7 +116,7 @@ const porpertysearch = () => {
                      </div>  
                   </div>
                 </div>
-                <div className="ml-8 mt-8">
+                <div className="ml-8 mt-2">
                     <div className=" rounded-lg  h-96 flex flex-col justify-around pt-2 pl-3 w-68 ">
                         <div className="flex flex-col justify-around h-100  mr-4 gap-6">
                            <p className="text-3xl font-bold text-[#386A8B]" >Todays Stats </p>

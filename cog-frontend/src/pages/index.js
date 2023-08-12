@@ -17,6 +17,7 @@ import Arrow from "../../public/assets/icons/Arrow - Down 2.png";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import Layout from "../../components/Layout/Layout";
+import { useRouter } from "next/router";
 export default function Home() {
   return (
    <Layout title='home'>
@@ -54,8 +55,26 @@ const Header = () => {
 };
 
 const Seacrh = () => {
-  const handleClick = () => {
-    console.log("Clicked");
+  const [searchValue,SetSearchValue]=useState('');
+  const router = useRouter();
+    const Whole='wholehome'
+    const Warehouse='warehouse'
+    const Flatapartment='flatapartment'
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push(`/for-rentals/prope?text=${encodeURIComponent(searchValue)}`)
+  };
+  const handleClic = (e) => {
+    e.preventDefault();
+    router.push(`/for-rentals/prope?text=${encodeURIComponent(Whole)}`)
+  };
+  const Warehous = (e) => {
+    e.preventDefault();
+    router.push(`/for-rentals/prope?text=${encodeURIComponent(Warehouse)}`)
+  };
+  const Flatapartmen = (e) => {
+    e.preventDefault();
+    router.push(`/for-rentals/prope?text=${encodeURIComponent(Flatapartment)}`)
   };
   return (
     <>
@@ -66,6 +85,8 @@ const Seacrh = () => {
             type="text"
             className="bg-lighterGrey h-full w-3/6 ml-2 pl-2 outline-none "
             placeholder="What property type are you looking for?"
+            value={searchValue}
+            onChange={e =>{SetSearchValue(e.currentTarget.value)}}
           />
           <Image src={stroke} className="items-center ml-2" alt="" />
           <Image src={Location} className="items-center ml-6 mr-4" alt="" />
@@ -84,16 +105,17 @@ const Seacrh = () => {
       </main>
       <div>
         <ul className="flex justify-center mt-4 text-lightGrey">
-          <li className="py-1 px-2" onClick={handleClick}>
-            Higlights
+          <li className="py-1 px-2 cursor-pointer" onClick={Warehouse}>
+            Higlights 
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer "  onClick={Warehous}
+          >
             Warehouse/storage facility
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer"  onClick={Flatapartmen}>
             Flat/apartment
           </li>
-          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full">
+          <li className="py-1 px-2 mx-1 items-center  border-2 border-Grey rounded-full cursor-pointer " onClick={handleClic}>
             Whole home
           </li>
         </ul>
@@ -101,6 +123,7 @@ const Seacrh = () => {
     </>
   );
 };
+
 
 const Rentals = () => {
   return (

@@ -96,7 +96,7 @@ function Apply({ data, setData }) {
             placeholder="your incorporation number"
           />
         </div>
-        <div className={`${styles.inputContainer} flex flex-col  `}>
+        <div className={`${styles.inputContainer} flex flex-col`}>
           <label htmlFor="Applicant incorporation date">
             {" "}
             Applicant incorporation date
@@ -211,17 +211,6 @@ function Apply({ data, setData }) {
           />
         </div>
       </form>
-
-      {/* <button
-        className="main-btn"
-        onClick={() => {
-          console.log("here");
-          dispatch(increament());
-        }}
-      >
-        {" "}
-        try{" "}
-      </button> */}
     </div>
   );
 }

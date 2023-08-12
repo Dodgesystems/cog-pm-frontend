@@ -6,6 +6,7 @@ import Footer from "../../../../components/footer";
 import TopNav from "../../../../components/topNav";
 // import styles
 import PD from "../../../styles/propertyDetails.module.css"
+import Link from "next/link";
 
 import Image from "next/image";
 
@@ -31,7 +32,9 @@ function PropertyDetails() {
                             <p className={PD.address}> {address} </p>
                         </div>
 
-                        <p className={PD.owner}> Listed by <a href="#" className={PD.owner_anchor}>{item.owner}</a> </p>
+                        <p className={PD.owner}> Listed by    <Link href='/propertylister'  legacyBehavior>
+                        <a href="#" className={PD.owner_anchor}>{item.owner}</a>
+                        </Link>    </p>
 
                         <button className={PD.applybtn}>Apply now</button>
                     </div>
