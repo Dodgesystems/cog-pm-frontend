@@ -10,6 +10,7 @@ import SigningDate from '../../../components/ProspectStages/SigningDate'
 import ClientDetails from '../../../components/ProspectStages/ClientDetails'
 import PropertyDetails from '../../../components/ProspectStages/PropertyDetails'
 
+
 const addProspect = () => {
   const [activeStage, setActiveStage] = useState(1)
   const [activeSubStage, setActiveSubStage] = useState(1)

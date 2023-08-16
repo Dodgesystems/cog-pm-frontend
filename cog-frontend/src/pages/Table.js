@@ -1,9 +1,15 @@
+import Navbar from "../../components/navbar"
+import TopNav from "../../components/topNav"
 import check from "../../public/assets/icons/Checkbox.svg"
 
 const Table = () => {
   return (
-
-    <div className="t_">
+    <div>
+            <Navbar />
+              <div className="z-40 mt-2">
+              <TopNav />
+              </div>
+    <div className="t_ mt-32">
           <div className="flex justify-between">
             <div className="flex t_head   h-14 border  p-2 rounded-full">
               <div className=" all  ">All application</div>
@@ -187,6 +193,7 @@ const Table = () => {
   </tbody>
 </table>
     </div>
+                </div>
   
   )
 }
