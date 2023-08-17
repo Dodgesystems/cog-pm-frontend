@@ -56,13 +56,14 @@ const Header = () => {
 
 const Seacrh = () => {
   const [searchValue,SetSearchValue]=useState('');
+  const [searchLocation,SetsearchLocation]=useState('');
   const router = useRouter();
     const Whole='wholehome'
     const Warehouse='warehouse'
     const Flatapartment='flatapartment'
   const handleClick = (e) => {
     e.preventDefault();
-    router.push(`/for-rentals/prope?text=${encodeURIComponent(searchValue)}`)
+    router.push(`/for-rentals/prope?text=${encodeURIComponent(searchValue)}&text2=${encodeURIComponent(searchLocation)}`)
   };
   const handleClic = (e) => {
     e.preventDefault();
@@ -94,6 +95,8 @@ const Seacrh = () => {
             type="text"
             className="h-full bg-lighterGrey w-28 pl-2 outline-none"
             placeholder="Local Area"
+            value={searchLocation}
+            onChange={e =>{SetsearchLocation(e.currentTarget.value)}}
           />
         </div>
         <div
