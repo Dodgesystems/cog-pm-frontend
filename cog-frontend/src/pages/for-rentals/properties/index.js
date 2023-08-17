@@ -3,14 +3,14 @@
 
 import Image from 'next/image'
 // importing the navbar and footer
-import Navbar from '../../../components/navbar'
-import Footer from '../../../components/footer'
+import Navbar from '../../../../components/navbar'
+import Footer from '../../../../components/footer'
 
-import TopNav from '../../../components/topNav'
+import TopNav from '../../../../components/topNav'
 // import styles from styles directory
-import BR_styles  from "../../styles/renters.module.css"
+import BR_styles  from "../../../styles/renters.module.css"
 // import data from "../../../db.json"
-import {data} from "../../../data.js"
+import {data} from "../../../../data.js"
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'

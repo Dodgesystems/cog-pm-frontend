@@ -58,24 +58,24 @@ const Seacrh = () => {
   const [searchValue,SetSearchValue]=useState('');
   const [searchLocation,SetsearchLocation]=useState('');
   const router = useRouter();
-    const Whole='wholehome'
+    const Whole='home'
     const Warehouse='warehouse'
     const Flatapartment='flatapartment'
   const handleClick = (e) => {
     e.preventDefault();
-    router.push(`/for-rentals/prope?text=${encodeURIComponent(searchValue)}&text2=${encodeURIComponent(searchLocation)}`)
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(searchValue)}&text2=${encodeURIComponent(searchLocation)}`)
   };
   const handleClic = (e) => {
     e.preventDefault();
-    router.push(`/for-rentals/prope?text=${encodeURIComponent(Whole)}`)
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(Whole)}`)
   };
   const Warehous = (e) => {
     e.preventDefault();
-    router.push(`/for-rentals/prope?text=${encodeURIComponent(Warehouse)}`)
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(Warehouse)}`)
   };
   const Flatapartmen = (e) => {
     e.preventDefault();
-    router.push(`/for-rentals/prope?text=${encodeURIComponent(Flatapartment)}`)
+    router.push(`/for-rentals/properties?text=${encodeURIComponent(Flatapartment)}`)
   };
   return (
     <>
