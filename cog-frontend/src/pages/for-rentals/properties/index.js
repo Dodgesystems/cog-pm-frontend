@@ -23,8 +23,9 @@ function prope() {
         const {text} =router.query;
         const {text2} =router.query;
         console.log(text2)
+        console.log(text)
         const multiple =(array) => {
-            return array.filter((el) =>Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(text)) &&Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(text2)) && Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(searchValue))
+            return array.filter((el) =>Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(text)) && Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(text2)) && Object.keys(el).some((parameter)=> el[parameter].toString().toLowerCase().includes(searchValue))
             )
         }
         const Data = multiple(data)
