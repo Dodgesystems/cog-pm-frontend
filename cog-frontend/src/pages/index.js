@@ -1,4 +1,5 @@
 import Image from "next/image";
+import check from "../../public/assets/icons/Checkbox.svg"
 import seacrh from "../../public/assets/icons/Search.png";
 import stroke from "../../public/assets/icons/Stroke 1.png";
 import Location from "../../public/assets/icons/Location.png";

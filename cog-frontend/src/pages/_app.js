@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import '@/styles/Table.css'
+
 import Layout from "../../components/Layout/Layout";
 
 import localFont from "next/font/local";

@@ -17,7 +17,7 @@ const Agency = () => {
         <section className="w-1/5 ">
           <Dashboard />
         </section>
-        <main className="w-4/5">
+        <main className="w-4/5">]
           <ProspectHeader />
           <div className="flex flex-start justify-end mt-6">
             <button
