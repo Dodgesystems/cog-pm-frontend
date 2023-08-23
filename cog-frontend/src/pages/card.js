@@ -2,7 +2,7 @@ import Home from '../../public/assets/icons/picture.png'
 import Bed from '../../public/assets/images/image 12.png' 
 import Toilet from '../../public/assets/images/image 16.png' 
 import hex from '../../public/assets/images/Group.png'
-import camera from '../../public/assets/icons/vector.svg'
+import camera from '../../public/assets/icons/Vector.svg'
 import Image from "next/image";
 import {AiOutlineHeart} from 'react-icons/ai'
 // import { AiFillLinkedin,AiFillInstagram,AiOutlineTwitter,AiFillStar } from 'react-icons/ai'
