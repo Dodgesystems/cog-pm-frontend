@@ -8,6 +8,8 @@ import iPhone from "../../public/assets/images/iPhone.png";
 import { benefits as benefitData } from "../../Data/benefit.js";
 import { useState, useEffect } from "react";
 import managerImage from "../../public/assets/images/Frame 157.png";
+import LandingPage from "../../public/assets/images/landingPage.png";
+import LandingPage1 from "../../public/assets/images/landingPage1.png";
 import biodun from "../../public/assets/images/biodun.png";
 import sliders from "../../public/assets/icons/fi_sliders.png";
 import database from "../../public/assets/icons/fi_database.png";
@@ -20,37 +22,81 @@ import Layout from "../../components/Layout/Layout";
 import { useRouter } from "next/router";
 export default function Home() {
   return (
-   <Layout title='home'>
-     <main className="font-Euclid">
-      <Header />
-      <Seacrh />
-      <Rentals />
-      <PropertyMangaers />
-      <BenefitHeader />
-      <div className="flex justify-center w-full">
-        <Benefit />
-      </div>
-      <ForRentals />
-      <ForManagers />
-      <Stories />
-      <Why />
-      <Faq />
-    </main>
-   </Layout>
+    <Layout title="home">
+      <main className="font-Euclid">
+        <Header />
+        <HandleType />
+        <Seacrh />
+        <Built />
+        <Rentals />
+        <PropertyMangaers />
+        <BenefitHeader />
+        <div className="flex justify-center w-full">
+          <Benefit />
+        </div>
+        <ForRentals />
+        <ForManagers />
+        <Stories />
+        <Why />
+        <Faq />
+      </main>
+    </Layout>
   );
 }
 
 const Header = () => {
   return (
     <header className="flex-col justify-center text-center">
-      <h1 className="flex justify-center text-center text-primary mt-36 mb-2 text-4xl font-bold">
+      <h1 className="flex justify-center text-center text-primary mt-36 mb-2 text-[40px] leading-normal font-bold">
         The property rental and sales <br /> experience just got better
       </h1>
-      <small className="text-xs leading-snug text-lightGrey">
+      <small className="text-xs leading-normal text-lightGrey">
         Either you are a real estate renter, buyer or manager, we make <br />{" "}
         your operations seamless.
       </small>
     </header>
+  );
+};
+
+const HandleType = () => {
+  const [type, setType] = useState(true);
+  const handleTypeClick = () => {
+    setType(!type);
+  };
+  return (
+    <section
+      className="flex bg-[#62909F] w-[156px] h-[46px]  m-auto rounded-full text-white text-lg  justify-between p-2 mt-6"
+      onClick={handleTypeClick}
+    >
+      <div className="cursor-pointer flex justify-between w-full transition-all">
+        <button
+          className={` w-1/2 mr-1 ${
+            type ? "bg-[#386A8B] rounded-full" : "bg-[#62909F]"
+          }`}
+        >
+          Rent
+        </button>
+        <button
+          className={` w-1/2 ml-1 ${
+            type ? "bg-[#62909F] " : "bg-[#386A8B] rounded-full"
+          }`}
+        >
+          Sell
+        </button>
+      </div>
+    </section>
+  );
+};
+
+const Built = () => {
+  return (
+    <section className="flex flex-col items-center m-auto justify-center mt-8">
+      <p className="text-[20px] text-[#999999]">Built for and trusted by </p>
+      <div className="flex  w-1/2 justify-between mt-6">
+        <Image src={LandingPage} alt="landingPage" />
+        <Image src={LandingPage1} alt="landingPage" />
+      </div>
+    </section>
   );
 };
 

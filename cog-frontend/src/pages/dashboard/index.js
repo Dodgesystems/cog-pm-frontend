@@ -1,12 +1,27 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../components/dashboardData/Tabs/TabStyles.module.scss";
 import { TabsData } from "../../../components/dashboardData/Tabs/TabsData";
 import TabTitle from "../../../components/dashboardData/Tabs/TabTitle";
 import TabContents from "../../../components/dashboardData/Tabs/TabContents";
-
+import { useRouter } from "next/router";
+// import {useNav}
 export default function Dashboard() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("tab1");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log({ token });
+    if (token) {
+      setToken(true);
+    } else {
+      setToken(false);
+      router.push("/loginPage");
+    }
+  }, [router]);
+  const [token, setToken] = useState(false);
+  if (!token) {
+    return null; // Render nothing while redirecting
+  }
 
   return (
     <main className={`${styles.dashboard} flex flex-col `}>
@@ -48,5 +63,3 @@ export default function Dashboard() {
     </main>
   );
 }
-
-
